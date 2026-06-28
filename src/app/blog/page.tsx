@@ -2,7 +2,7 @@
 
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { ArrowRight, Calendar, User, Tag } from 'lucide-react';
+import { ArrowRight, Calendar, User } from 'lucide-react';
 
 const posts = [
   {
@@ -43,7 +43,7 @@ const posts = [
     date: 'June 5, 2026',
     author: 'Cyb3rwize',
     category: 'Guide',
-    slug: 'mitre-attack-mapping-guide',
+    slug: 'mitre-attack-mapping',
   },
   {
     title: 'The Dark Web in 2026: What Security Teams Need to Know',
@@ -59,7 +59,6 @@ export default function BlogPage() {
   return (
     <div className="py-20 px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-16">
           <Badge variant="default" className="mb-4">Blog</Badge>
           <h1 className="text-5xl font-bold mb-4 gradient-text">Security Research & Insights</h1>
@@ -68,11 +67,10 @@ export default function BlogPage() {
           </p>
         </div>
 
-        {/* Posts Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {posts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <article className="group p-6 rounded-xl border border-border bg-card/50 hover:border-primary/30 hover:bg-card transition-all duration-300 h-full glow-cyan">
+              <article className="group p-6 rounded-xl border border-border bg-card hover:border-primary/30 hover:bg-card transition-all duration-300 h-full glow-cyan">
                 <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
                   <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> {post.date}</span>
                   <span className="flex items-center gap-1"><User className="h-3 w-3" /> {post.author}</span>
