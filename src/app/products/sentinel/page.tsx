@@ -58,11 +58,11 @@ export default function SentinelProductPage() {
       <section className="py-20 px-4 text-center">
         <Badge variant="default" className="mb-4">Product</Badge>
         <div className="flex items-center justify-center gap-3 mb-4">
-          <Eye className="h-10 w-10 text-[#F59E0B]" />
+          <Eye className="h-10 w-10 text-amber-400" />
           <h1 className="text-5xl font-bold gradient-text">SENTINEL</h1>
         </div>
-        <p className="text-xl text-[#6B7D95] mb-2">Continuous Security Monitoring</p>
-        <p className="text-[#6B7D95] max-w-2xl mx-auto text-lg">
+        <p className="text-xl text-muted-foreground mb-2">Continuous Security Monitoring</p>
+        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
           24/7 automated vulnerability scanning. Never miss a security gap.
         </p>
         <div className="flex gap-4 justify-center mt-8">
@@ -76,12 +76,12 @@ export default function SentinelProductPage() {
       </section>
 
       {/* Highlights */}
-      <section className="py-16 px-4 bg-[#0A1628]/30">
+      <section className="py-16 px-4 bg-card/30">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {highlights.map((h) => (
               <div key={h.text} className="p-4 rounded-xl border border-border bg-card text-center">
-                <h.icon className="h-6 w-6 text-[#F59E0B] mx-auto mb-2" />
+                <h.icon className="h-6 w-6 text-amber-400 mx-auto mb-2" />
                 <div className="text-sm">{h.text}</div>
               </div>
             ))}
@@ -103,7 +103,7 @@ export default function SentinelProductPage() {
                 transition={{ delay: index * 0.1 }}
                 className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card"
               >
-                <div className="w-10 h-10 rounded-lg bg-[#F59E0B]/10 border border-[#F59E0B]/20 flex items-center justify-center text-[#F59E0B] font-bold text-sm">
+                <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 font-bold text-sm">
                   {step.step}
                 </div>
                 <div>
@@ -117,7 +117,7 @@ export default function SentinelProductPage() {
       </section>
 
       {/* Pricing */}
-      <section className="py-20 px-4 bg-[#0A1628]/30">
+      <section className="py-20 px-4 bg-card/30">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Plans & Pricing</h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -129,7 +129,7 @@ export default function SentinelProductPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className={`relative p-6 rounded-xl border bg-card ${
-                  tier.popular ? 'border-[#F59E0B]/50 shadow-[0_0_30px_rgba(245,158,11,0.1)]' : 'border-border'
+                  tier.popular ? 'border-amber-400/50 shadow-[0_0_30px_rgba(245,158,11,0.1)]' : 'border-border'
                 }`}
               >
                 {tier.popular && (
@@ -139,7 +139,7 @@ export default function SentinelProductPage() {
                 )}
                 <h3 className="text-lg font-semibold mb-2">{tier.name}</h3>
                 <div className="mb-1"><span className="text-3xl font-bold">{tier.price}</span><span className="text-sm text-muted-foreground">{tier.period}</span></div>
-                <div className="text-sm text-[#F59E0B] mb-1">{tier.assets}</div>
+                <div className="text-sm text-amber-400 mb-1">{tier.assets}</div>
                 <div className="text-xs text-muted-foreground mb-4">{tier.frequency} · {tier.alerts}</div>
                 <Link href="/register">
                   <Button variant={tier.popular ? 'default' : 'outline'} className="w-full mb-4" size="sm">

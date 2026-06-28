@@ -43,20 +43,20 @@ export default function AboutPage() {
       <section className="py-20 px-4 text-center">
         <Badge variant="default" className="mb-4">About</Badge>
         <h1 className="text-5xl font-bold mb-4 gradient-text">Our Mission</h1>
-        <p className="text-[#6B7D95] max-w-3xl mx-auto text-lg leading-relaxed">
+        <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
           We exist to protect organizations against the unknown. The most dangerous threats 
           are the ones nobody knows about — and we see them first.
         </p>
       </section>
 
       {/* Stats */}
-      <section className="py-16 px-4 bg-[#0A1628]/30">
+      <section className="py-16 px-4 bg-card/30">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center p-6 rounded-xl border border-[#1A2D44] bg-[#060B14]/50">
-                <div className="text-4xl font-bold text-[#00E3FD] mb-2">{stat.value}</div>
-                <div className="text-sm text-[#6B7D95]">{stat.label}</div>
+              <div key={stat.label} className="text-center p-6 rounded-xl border border-border bg-background/50">
+                <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -70,32 +70,32 @@ export default function AboutPage() {
             <div>
               <Badge variant="default" className="mb-4">Our Story</Badge>
               <h2 className="text-3xl font-bold mb-4">Born from Necessity</h2>
-              <p className="text-[#6B7D95] leading-relaxed mb-4">
+              <p className="text-muted-foreground leading-relaxed mb-4">
                 Zerodin was founded in 2026 by a security researcher who was tired of juggling 
                 20 different tools for a single pentest. The vision was simple: one platform 
                 that does everything.
               </p>
-              <p className="text-[#6B7D95] leading-relaxed mb-4">
+              <p className="text-muted-foreground leading-relaxed mb-4">
                 What started as TALOS — a universal pentesting orchestration platform — grew 
                 into a complete ecosystem of security products. Today, Zerodin builds tools 
                 used by pentesters, security teams, and government agencies worldwide.
               </p>
-              <p className="text-[#6B7D95] leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 We're headquartered in Freetown, Sierra Leone — proving that world-class 
                 cybersecurity can come from anywhere.
               </p>
             </div>
-            <div className="p-8 rounded-xl border border-[#1A2D44] bg-[#0A1628]/50 glow-cyan">
+            <div className="p-8 rounded-xl border border-border bg-card/50 glow-cyan">
               <div className="flex items-center gap-2 mb-4">
-                <MapPin className="h-5 w-5 text-[#00E3FD]" />
-                <span className="text-sm text-[#6B7D95]">Headquarters</span>
+                <MapPin className="h-5 w-5 text-primary" />
+                <span className="text-sm text-muted-foreground">Headquarters</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Freetown, Sierra Leone</h3>
-              <p className="text-sm text-[#6B7D95] leading-relaxed mb-4">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                 Building enterprise-grade cybersecurity tools from West Africa. Our location 
                 gives us a unique perspective on global security challenges.
               </p>
-              <div className="flex items-center gap-2 text-sm text-[#00E3FD]">
+              <div className="flex items-center gap-2 text-sm text-primary">
                 <Globe className="h-4 w-4" />
                 <span>Serving clients worldwide</span>
               </div>
@@ -105,7 +105,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20 px-4 bg-[#0A1628]/30">
+      <section className="py-20 px-4 bg-card/30">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <Badge variant="default" className="mb-4">Values</Badge>
@@ -119,11 +119,11 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 rounded-xl border border-[#1A2D44] bg-[#060B14]/50"
+                className="p-6 rounded-xl border border-border bg-background/50"
               >
-                <value.icon className="h-8 w-8 text-[#00E3FD] mb-3" />
+                <value.icon className="h-8 w-8 text-primary mb-3" />
                 <h3 className="text-lg font-semibold mb-2">{value.title}</h3>
-                <p className="text-sm text-[#6B7D95] leading-relaxed">{value.description}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -133,7 +133,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-16 px-4 text-center">
         <h2 className="text-3xl font-bold mb-4">Join Our Mission</h2>
-        <p className="text-[#6B7D95] mb-8">Be part of the future of cybersecurity.</p>
+        <p className="text-muted-foreground mb-8">Be part of the future of cybersecurity.</p>
         <Link href="/register">
           <Button size="xl">
             Get Started

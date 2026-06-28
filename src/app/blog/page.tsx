@@ -63,7 +63,7 @@ export default function BlogPage() {
         <div className="text-center mb-16">
           <Badge variant="default" className="mb-4">Blog</Badge>
           <h1 className="text-5xl font-bold mb-4 gradient-text">Security Research & Insights</h1>
-          <p className="text-[#6B7D95] max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Deep dives into cybersecurity, product updates, and industry analysis from the Zerodin team.
           </p>
         </div>
@@ -72,16 +72,16 @@ export default function BlogPage() {
         <div className="grid md:grid-cols-2 gap-6">
           {posts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <article className="group p-6 rounded-xl border border-[#1A2D44] bg-[#0A1628]/50 hover:border-[#00E3FD]/30 hover:bg-[#0A1628] transition-all duration-300 h-full glow-cyan">
-                <div className="flex items-center gap-3 text-xs text-[#6B7D95] mb-3">
+              <article className="group p-6 rounded-xl border border-border bg-card/50 hover:border-primary/30 hover:bg-card transition-all duration-300 h-full glow-cyan">
+                <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
                   <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> {post.date}</span>
                   <span className="flex items-center gap-1"><User className="h-3 w-3" /> {post.author}</span>
                 </div>
-                <h2 className="text-lg font-semibold mb-2 group-hover:text-[#00E3FD] transition-colors">{post.title}</h2>
-                <p className="text-sm text-[#6B7D95] mb-4 leading-relaxed">{post.excerpt}</p>
+                <h2 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">{post.title}</h2>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{post.excerpt}</p>
                 <div className="flex items-center justify-between">
                   <Badge variant="secondary" className="text-xs">{post.category}</Badge>
-                  <span className="text-xs text-[#00E3FD] flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-xs text-primary flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     Read More <ArrowRight className="h-3 w-3" />
                   </span>
                 </div>

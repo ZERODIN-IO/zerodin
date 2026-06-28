@@ -102,8 +102,8 @@ export default function HomePage() {
         <div className="absolute inset-0 grid-bg opacity-50" />
         
         {/* Glow orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00E3FD] rounded-full blur-[200px] opacity-[0.03]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#8B5CF6] rounded-full blur-[200px] opacity-[0.03]" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full blur-[200px] opacity-[0.03]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400 rounded-full blur-[200px] opacity-[0.03]" />
 
         <div className="relative z-10 max-w-5xl mx-auto text-center">
           <motion.div
@@ -114,21 +114,21 @@ export default function HomePage() {
             {/* Badge */}
             <div className="flex justify-center mb-6">
               <Badge variant="default" className="text-sm px-4 py-1.5 gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#00E3FD] animate-pulse" />
+                <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
                 Now in Public Beta
               </Badge>
             </div>
 
             {/* Logo Symbol */}
             <div className="flex justify-center mb-8">
-              <Shield className="h-20 w-20 text-[#00E3FD]" style={{ filter: "drop-shadow(0 0 30px rgba(0,227,253,0.5))" }} />
+              <Shield className="h-20 w-20 text-primary" style={{ filter: "drop-shadow(0 0 30px rgba(0,227,253,0.5))" }} />
             </div>
 
             {/* Hero Text */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6">
               <span className="gradient-text">See the Unseen</span>
             </h1>
-            <p className="text-lg sm:text-xl text-[#6B7D95] max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
               Universal cybersecurity platform protecting organizations against zero-day threats, 
               undiscovered vulnerabilities, and emerging attack vectors.
             </p>
@@ -151,10 +151,10 @@ export default function HomePage() {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
               {stats.map((stat) => (
-                <div key={stat.label} className="p-4 rounded-xl border border-[#1A2D44] bg-[#0A1628]/50 backdrop-blur">
-                  <stat.icon className="h-5 w-5 text-[#00E3FD] mb-2 mx-auto" />
-                  <div className="text-2xl font-bold text-[#E8EDF5]">{stat.value}</div>
-                  <div className="text-xs text-[#6B7D95]">{stat.label}</div>
+                <div key={stat.label} className="p-4 rounded-xl border border-border bg-card/50 backdrop-blur">
+                  <stat.icon className="h-5 w-5 text-primary mb-2 mx-auto" />
+                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                  <div className="text-xs text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -170,7 +170,7 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <Badge variant="default" className="mb-4">Products</Badge>
             <h2 className="text-4xl font-bold mb-4">Our Product Suite</h2>
-            <p className="text-[#6B7D95] max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Five integrated products covering every aspect of offensive and defensive cybersecurity.
             </p>
           </div>
@@ -185,10 +185,10 @@ export default function HomePage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Link href={product.href}>
-                  <div className="group p-6 rounded-xl border border-[#1A2D44] bg-[#0A1628]/50 hover:border-[#00E3FD]/30 hover:bg-[#0A1628] transition-all duration-300 h-full glow-cyan">
-                    <product.icon className="h-10 w-10 text-[#00E3FD] mb-4" />
+                  <div className="group p-6 rounded-xl border border-border bg-card/50 hover:border-primary/30 hover:bg-card transition-all duration-300 h-full glow-cyan">
+                    <product.icon className="h-10 w-10 text-primary mb-4" />
                     <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                    <p className="text-sm text-[#6B7D95] mb-4 leading-relaxed">{product.description}</p>
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{product.description}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {product.tiers.map((tier) => (
                         <Badge key={tier} variant="secondary" className="text-xs">{tier}</Badge>
@@ -205,12 +205,12 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════ */}
       {/* WHY ZERODIN SECTION */}
       {/* ════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-4 bg-[#0A1628]/30">
+      <section className="py-24 px-4 bg-card/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <Badge variant="default" className="mb-4">Why Zerodin</Badge>
             <h2 className="text-4xl font-bold mb-4">Built for the Unknown</h2>
-            <p className="text-[#6B7D95] max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               The most dangerous threats are the ones nobody knows about. We see them first.
             </p>
           </div>
@@ -223,11 +223,11 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}
-                className="text-center p-8 rounded-xl border border-[#1A2D44] bg-[#060B14]/50"
+                className="text-center p-8 rounded-xl border border-border bg-background/50"
               >
-                <feature.icon className="h-12 w-12 text-[#00E3FD] mx-auto mb-4" />
+                <feature.icon className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                <p className="text-sm text-[#6B7D95] leading-relaxed">{feature.description}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -241,14 +241,14 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto text-center">
           <Badge variant="default" className="mb-4">Coverage</Badge>
           <h2 className="text-4xl font-bold mb-4">16 Attack Surfaces Covered</h2>
-          <p className="text-[#6B7D95] mb-12 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">
             No other platform covers this breadth of security testing in a single unified interface.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {attackSurfaces.map((surface) => (
-              <div key={surface.name} className="p-4 rounded-xl border border-[#1A2D44] bg-[#0A1628]/30 hover:border-[#00E3FD]/20 transition-all">
-                <surface.icon className="h-6 w-6 text-[#00E3FD] mb-2 mx-auto" />
-                <div className="text-xs text-[#6B7D95]">{surface.name}</div>
+              <div key={surface.name} className="p-4 rounded-xl border border-border bg-card/30 hover:border-primary/20 transition-all">
+                <surface.icon className="h-6 w-6 text-primary mb-2 mx-auto" />
+                <div className="text-xs text-muted-foreground">{surface.name}</div>
               </div>
             ))}
           </div>
@@ -260,10 +260,10 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════ */}
       <section className="py-24 px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="p-12 rounded-2xl border border-[#1A2D44] bg-[#0A1628]/50 glow-cyan">
-            <Shield className="h-16 w-16 text-[#00E3FD] mx-auto mb-6" style={{ filter: "drop-shadow(0 0 20px rgba(0,227,253,0.4))" }} />
+          <div className="p-12 rounded-2xl border border-border bg-card/50 glow-cyan">
+            <Shield className="h-16 w-16 text-primary mx-auto mb-6" style={{ filter: "drop-shadow(0 0 20px rgba(0,227,253,0.4))" }} />
             <h2 className="text-3xl font-bold mb-4">Ready to See the Unseen?</h2>
-            <p className="text-[#6B7D95] mb-8 max-w-xl mx-auto">
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
               Start your free trial today. No credit card required. Full access to TALOS Community Edition.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -279,7 +279,7 @@ export default function HomePage() {
                 </Button>
               </Link>
             </div>
-            <div className="mt-8 flex items-center justify-center gap-6 text-xs text-[#6B7D95]">
+            <div className="mt-8 flex items-center justify-center gap-6 text-xs text-muted-foreground">
               <span className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3 text-green-400" /> No credit card required</span>
               <span className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3 text-green-400" /> 14-day Pro trial</span>
               <span className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3 text-green-400" /> Cancel anytime</span>

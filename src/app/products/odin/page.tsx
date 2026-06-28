@@ -42,7 +42,7 @@ export default function OdinProductPage() {
       <section className="py-20 px-4 text-center">
         <Badge variant="default" className="mb-4">Product</Badge>
         <div className="flex items-center justify-center gap-3 mb-4">
-          <Globe className="h-10 w-10 text-[#EF4444]" />
+          <Globe className="h-10 w-10 text-destructive" />
           <h1 className="text-5xl font-bold gradient-text">ODIN</h1>
         </div>
         <p className="text-xl text-muted-foreground mb-2">Threat Intelligence Platform</p>
@@ -56,7 +56,7 @@ export default function OdinProductPage() {
       </section>
 
       {/* Capabilities */}
-      <section className="py-20 px-4 bg-[#0A1628]/30">
+      <section className="py-20 px-4 bg-card/30">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">What ODIN Monitors</h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -69,7 +69,7 @@ export default function OdinProductPage() {
                 transition={{ delay: index * 0.1 }}
                 className="p-6 rounded-xl border border-border bg-card"
               >
-                <cap.icon className="h-8 w-8 text-[#EF4444] mb-3" />
+                <cap.icon className="h-8 w-8 text-destructive mb-3" />
                 <h3 className="text-lg font-semibold mb-2">{cap.title}</h3>
                 <p className="text-sm text-muted-foreground">{cap.desc}</p>
               </motion.div>
@@ -91,7 +91,7 @@ export default function OdinProductPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className={`relative p-6 rounded-xl border bg-card ${
-                  tier.popular ? 'border-[#EF4444]/50 shadow-[0_0_30px_rgba(239,68,68,0.1)]' : 'border-border'
+                  tier.popular ? 'border-destructive/50 shadow-[0_0_30px_rgba(239,68,68,0.1)]' : 'border-border'
                 }`}
               >
                 {tier.popular && (
@@ -121,7 +121,7 @@ export default function OdinProductPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 text-center bg-[#0A1628]/30">
+      <section className="py-16 px-4 text-center bg-card/30">
         <h2 className="text-3xl font-bold mb-4">Know before they strike</h2>
         <p className="text-muted-foreground mb-8">Start monitoring the dark web for threats today.</p>
         <Link href="/register"><Button size="xl">Start Free Trial <ArrowRight className="ml-2 h-5 w-5" /></Button></Link>

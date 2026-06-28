@@ -41,12 +41,33 @@
   --radius: 0.5rem;
 }
 
+.light {
+  --background: #F5F7FA;
+  --foreground: #1A1A2E;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A2E;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --primary: #0090A8;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1F5F9;
+  --secondary-foreground: #1A1A2E;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #F1F5F9;
+  --accent-foreground: #1A1A2E;
+  --destructive: #DC3545;
+  --ring: #0090A8;
+}
+
+* {
+  border-color: var(--border);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "rlig" 1, "calt" 1;
 }
 
 /* Glow Effects */
@@ -56,13 +77,10 @@ body {
 .glow-cyan:hover {
   box-shadow: 0 0 30px rgba(0, 227, 253, 0.25), 0 0 60px rgba(0, 227, 253, 0.10);
 }
-.glow-text {
-  text-shadow: 0 0 20px rgba(0, 227, 253, 0.3);
-}
 
 /* Gradient Text */
 .gradient-text {
-  background: linear-gradient(to right, #E8EDF5, #00E3FD);
+  background: linear-gradient(to right, var(--foreground), var(--primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -74,23 +92,4 @@ body {
     linear-gradient(rgba(0, 227, 253, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 227, 253, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
-}
-
-/* Animated Border */
-.animated-border {
-  position: relative;
-}
-.animated-border::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #00E3FD, transparent);
-  animation: border-slide 3s ease-in-out infinite;
-}
-@keyframes border-slide {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
 }

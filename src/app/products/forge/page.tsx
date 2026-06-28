@@ -36,7 +36,7 @@ export default function ForgeProductPage() {
       <section className="py-20 px-4 text-center">
         <Badge variant="default" className="mb-4">Product</Badge>
         <div className="flex items-center justify-center gap-3 mb-4">
-          <Zap className="h-10 w-10 text-[#8B5CF6]" />
+          <Zap className="h-10 w-10 text-purple-400" />
           <h1 className="text-5xl font-bold gradient-text">FORGE</h1>
         </div>
         <p className="text-xl text-muted-foreground mb-2">Automated Exploitation Engine</p>
@@ -50,7 +50,7 @@ export default function ForgeProductPage() {
       </section>
 
       {/* Capabilities */}
-      <section className="py-20 px-4 bg-[#0A1628]/30">
+      <section className="py-20 px-4 bg-card/30">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">What FORGE Does</h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -63,7 +63,7 @@ export default function ForgeProductPage() {
                 transition={{ delay: index * 0.1 }}
                 className="p-6 rounded-xl border border-border bg-card"
               >
-                <cap.icon className="h-8 w-8 text-[#8B5CF6] mb-3" />
+                <cap.icon className="h-8 w-8 text-purple-400 mb-3" />
                 <h3 className="text-lg font-semibold mb-2">{cap.title}</h3>
                 <p className="text-sm text-muted-foreground">{cap.desc}</p>
               </motion.div>
@@ -85,12 +85,12 @@ export default function ForgeProductPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className={`relative p-6 rounded-xl border bg-card ${
-                  tier.popular ? 'border-[#8B5CF6]/50 shadow-[0_0_30px_rgba(139,92,246,0.1)]' : 'border-border'
+                  tier.popular ? 'border-purple-400/50 shadow-[0_0_30px_rgba(139,92,246,0.1)]' : 'border-border'
                 }`}
               >
                 {tier.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="gap-1 text-[10px] bg-[#8B5CF6]/10 text-[#8B5CF6] border-[#8B5CF6]/20">MOST POPULAR</Badge>
+                    <Badge className="gap-1 text-[10px] bg-purple-500/10 text-purple-400 border-purple-500/20">MOST POPULAR</Badge>
                   </div>
                 )}
                 <h3 className="text-lg font-semibold mb-2">{tier.name}</h3>
@@ -115,7 +115,7 @@ export default function ForgeProductPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 text-center bg-[#0A1628]/30">
+      <section className="py-16 px-4 text-center bg-card/30">
         <h2 className="text-3xl font-bold mb-4">Prove it's real</h2>
         <p className="text-muted-foreground mb-8">Turn findings into proof with automated exploitation.</p>
         <Link href="/register"><Button size="xl">Get Started <ArrowRight className="ml-2 h-5 w-5" /></Button></Link>

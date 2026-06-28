@@ -62,7 +62,7 @@ export default function ProductsPage() {
         <div className="text-center mb-16">
           <Badge variant="default" className="mb-4">Products</Badge>
           <h1 className="text-5xl font-bold mb-4 gradient-text">Our Product Suite</h1>
-          <p className="text-[#6B7D95] max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Five integrated products covering every aspect of offensive and defensive cybersecurity.
             All built on the same platform. All working together.
           </p>
@@ -79,15 +79,15 @@ export default function ProductsPage() {
               transition={{ delay: index * 0.1 }}
             >
               <Link href={product.href}>
-                <div className="group p-8 rounded-xl border border-[#1A2D44] bg-[#0A1628]/50 hover:border-[#00E3FD]/30 hover:bg-[#0A1628] transition-all duration-300 glow-cyan">
+                <div className="group p-8 rounded-xl border border-border bg-card/50 hover:border-primary/30 hover:bg-card transition-all duration-300 glow-cyan">
                   <div className="flex flex-col md:flex-row gap-6 items-start">
                     <div className="flex-shrink-0">
-                      <product.icon className="h-12 w-12 text-[#00E3FD]" />
+                      <product.icon className="h-12 w-12 text-primary" />
                     </div>
                     <div className="flex-1">
                       <h2 className="text-2xl font-bold mb-1">{product.name}</h2>
-                      <p className="text-sm text-[#00E3FD] mb-3">{product.tagline}</p>
-                      <p className="text-[#6B7D95] mb-4 leading-relaxed">{product.description}</p>
+                      <p className="text-sm text-primary mb-3">{product.tagline}</p>
+                      <p className="text-muted-foreground mb-4 leading-relaxed">{product.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {product.tiers.map((tier) => (
                           <Badge key={tier} variant="secondary" className="text-xs">{tier}</Badge>
@@ -95,7 +95,7 @@ export default function ProductsPage() {
                       </div>
                     </div>
                     <div className="flex-shrink-0 self-center">
-                      <ArrowRight className="h-6 w-6 text-[#6B7D95] group-hover:text-[#00E3FD] group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="h-6 w-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
                   </div>
                 </div>
@@ -108,12 +108,12 @@ export default function ProductsPage() {
         <div className="mt-16 text-center">
           <Badge variant="default" className="mb-4">Add-ons</Badge>
           <h2 className="text-3xl font-bold mb-4">TALOS Premium Engines</h2>
-          <p className="text-[#6B7D95] mb-8">
+          <p className="text-muted-foreground mb-8">
             Six specialized engines that extend TALOS with advanced capabilities.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {['PROMETHEUS', 'JANUS', 'NEMESIS', 'NEXUS', 'MINERVA', 'AEGIS'].map((engine) => (
-              <div key={engine} className="p-4 rounded-lg border border-[#1A2D44] bg-[#0A1628]/30 text-sm font-mono text-[#00E3FD]">
+              <div key={engine} className="p-4 rounded-lg border border-border bg-card/30 text-sm font-mono text-primary">
                 {engine}
               </div>
             ))}

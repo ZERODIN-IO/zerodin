@@ -36,7 +36,7 @@ export default function NexusProductPage() {
       <section className="py-20 px-4 text-center">
         <Badge variant="default" className="mb-4">Product</Badge>
         <div className="flex items-center justify-center gap-3 mb-4">
-          <Server className="h-10 w-10 text-[#3B82F6]" />
+          <Server className="h-10 w-10 text-blue-400" />
           <h1 className="text-5xl font-bold gradient-text">NEXUS</h1>
         </div>
         <p className="text-xl text-muted-foreground mb-2">Cross-Platform Intelligence</p>
@@ -50,7 +50,7 @@ export default function NexusProductPage() {
       </section>
 
       {/* Capabilities */}
-      <section className="py-20 px-4 bg-[#0A1628]/30">
+      <section className="py-20 px-4 bg-card/30">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">What NEXUS Connects</h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -63,7 +63,7 @@ export default function NexusProductPage() {
                 transition={{ delay: index * 0.1 }}
                 className="p-6 rounded-xl border border-border bg-card"
               >
-                <cap.icon className="h-8 w-8 text-[#3B82F6] mb-3" />
+                <cap.icon className="h-8 w-8 text-blue-400 mb-3" />
                 <h3 className="text-lg font-semibold mb-2">{cap.title}</h3>
                 <p className="text-sm text-muted-foreground">{cap.desc}</p>
               </motion.div>
@@ -85,7 +85,7 @@ export default function NexusProductPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className={`relative p-6 rounded-xl border bg-card ${
-                  tier.popular ? 'border-[#3B82F6]/50 shadow-[0_0_30px_rgba(59,130,246,0.1)]' : 'border-border'
+                  tier.popular ? 'border-blue-400/50 shadow-[0_0_30px_rgba(59,130,246,0.1)]' : 'border-border'
                 }`}
               >
                 {tier.popular && (
@@ -115,7 +115,7 @@ export default function NexusProductPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 text-center bg-[#0A1628]/30">
+      <section className="py-16 px-4 text-center bg-card/30">
         <h2 className="text-3xl font-bold mb-4">Everything connected</h2>
         <p className="text-muted-foreground mb-8">See your complete security picture in one dashboard.</p>
         <Link href="/register"><Button size="xl">Get Started <ArrowRight className="ml-2 h-5 w-5" /></Button></Link>

@@ -46,11 +46,11 @@ export default function TalosProductPage() {
       <section className="py-20 px-4 text-center">
         <Badge variant="default" className="mb-4">Product</Badge>
         <div className="flex items-center justify-center gap-3 mb-4">
-          <Target className="h-10 w-10 text-[#00E3FD]" />
+          <Target className="h-10 w-10 text-primary" />
           <h1 className="text-5xl font-bold gradient-text">TALOS</h1>
         </div>
-        <p className="text-xl text-[#6B7D95] mb-2">Universal Pentesting Platform</p>
-        <p className="text-[#6B7D95] max-w-2xl mx-auto text-lg">
+        <p className="text-xl text-muted-foreground mb-2">Universal Pentesting Platform</p>
+        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
           One command. Every attack surface. Autonomous.
         </p>
         <div className="flex gap-4 justify-center mt-8">
@@ -64,13 +64,13 @@ export default function TalosProductPage() {
       </section>
 
       {/* Highlights */}
-      <section className="py-16 px-4 bg-[#0A1628]/30">
+      <section className="py-16 px-4 bg-card/30">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {highlights.map((h) => (
-              <div key={h.text} className="p-4 rounded-xl border border-[#1A2D44] bg-[#060B14]/50 text-center">
-                <h.icon className="h-6 w-6 text-[#00E3FD] mx-auto mb-2" />
-                <div className="text-sm text-[#E8EDF5]">{h.text}</div>
+              <div key={h.text} className="p-4 rounded-xl border border-border bg-background/50 text-center">
+                <h.icon className="h-6 w-6 text-primary mx-auto mb-2" />
+                <div className="text-sm text-foreground">{h.text}</div>
               </div>
             ))}
           </div>
@@ -89,14 +89,14 @@ export default function TalosProductPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center gap-4 p-4 rounded-xl border border-[#1A2D44] bg-[#0A1628]/50"
+                className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card/50"
               >
-                <div className="w-10 h-10 rounded-lg bg-[#00E3FD]/10 border border-[#00E3FD]/20 flex items-center justify-center text-[#00E3FD] font-bold text-sm">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-sm">
                   {phase.number}
                 </div>
                 <div>
                   <h3 className="font-semibold text-sm">{phase.name}</h3>
-                  <p className="text-xs text-[#6B7D95]">{phase.desc}</p>
+                  <p className="text-xs text-muted-foreground">{phase.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -105,15 +105,15 @@ export default function TalosProductPage() {
       </section>
 
       {/* Attack Surfaces */}
-      <section className="py-20 px-4 bg-[#0A1628]/30">
+      <section className="py-20 px-4 bg-card/30">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Attack Surfaces Covered</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {attackSurfaces.map((surface) => (
-              <div key={surface.name} className="p-4 rounded-xl border border-[#1A2D44] bg-[#060B14]/50">
-                <surface.icon className="h-6 w-6 text-[#00E3FD] mb-2" />
+              <div key={surface.name} className="p-4 rounded-xl border border-border bg-background/50">
+                <surface.icon className="h-6 w-6 text-primary mb-2" />
                 <div className="text-sm font-medium">{surface.name}</div>
-                <div className="text-xs text-[#6B7D95]">{surface.tools} tools</div>
+                <div className="text-xs text-muted-foreground">{surface.tools} tools</div>
               </div>
             ))}
           </div>
@@ -123,7 +123,7 @@ export default function TalosProductPage() {
       {/* CTA */}
       <section className="py-16 px-4 text-center">
         <h2 className="text-3xl font-bold mb-4">Ready to pentest everything?</h2>
-        <p className="text-[#6B7D95] mb-8">Start your 14-day free trial. Full access to all 16 types.</p>
+        <p className="text-muted-foreground mb-8">Start your 14-day free trial. Full access to all 16 types.</p>
         <Link href="/register">
           <Button size="xl">Start Free Trial <ArrowRight className="ml-2 h-5 w-5" /></Button>
         </Link>

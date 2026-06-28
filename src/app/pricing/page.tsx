@@ -147,7 +147,7 @@ export default function PricingPage() {
       <section className="py-20 px-4 text-center">
         <Badge variant="default" className="mb-4">Pricing</Badge>
         <h1 className="text-5xl font-bold mb-4 gradient-text">Simple, Transparent Pricing</h1>
-        <p className="text-[#6B7D95] max-w-2xl mx-auto text-lg">
+        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
           Start free. Upgrade when you need more power. All plans include 14-day free trial on Pro and Team.
         </p>
       </section>
@@ -157,10 +157,10 @@ export default function PricingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 mb-2">
-              <Shield className="h-6 w-6 text-[#00E3FD]" />
+              <Shield className="h-6 w-6 text-primary" />
               <h2 className="text-3xl font-bold">TALOS</h2>
             </div>
-            <p className="text-[#6B7D95]">Universal Pentesting Platform</p>
+            <p className="text-muted-foreground">Universal Pentesting Platform</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -171,10 +171,10 @@ export default function PricingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`relative p-6 rounded-xl border bg-[#0A1628]/50 ${
+                className={`relative p-6 rounded-xl border bg-card/50 ${
                   tier.popular 
-                    ? 'border-[#00E3FD]/50 shadow-[0_0_30px_rgba(0,227,253,0.1)]' 
-                    : 'border-[#1A2D44]'
+                    ? 'border-primary/50 shadow-[0_0_30px_rgba(0,227,253,0.1)]' 
+                    : 'border-border'
                 }`}
               >
                 {tier.popular && (
@@ -186,10 +186,10 @@ export default function PricingPage() {
                 )}
                 <div className="text-2xl mb-3">{tier.icon}</div>
                 <h3 className="text-lg font-semibold mb-1">{tier.name}</h3>
-                <p className="text-xs text-[#6B7D95] mb-4">{tier.description}</p>
+                <p className="text-xs text-muted-foreground mb-4">{tier.description}</p>
                 <div className="mb-4">
                   <span className="text-4xl font-bold">{tier.price}</span>
-                  <span className="text-sm text-[#6B7D95]">{tier.period}</span>
+                  <span className="text-sm text-muted-foreground">{tier.period}</span>
                 </div>
                 <Link href={tier.href}>
                   <Button variant={tier.variant} className="w-full mb-6" size="sm">
@@ -203,9 +203,9 @@ export default function PricingPage() {
                       {feature.included ? (
                         <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
                       ) : (
-                        <X className="h-4 w-4 text-[#6B7D95]/30 flex-shrink-0 mt-0.5" />
+                        <X className="h-4 w-4 text-muted-foreground/30 flex-shrink-0 mt-0.5" />
                       )}
-                      <span className={feature.included ? 'text-[#E8EDF5]' : 'text-[#6B7D95]/40'}>
+                      <span className={feature.included ? 'text-foreground' : 'text-muted-foreground/40'}>
                         {feature.text}
                       </span>
                     </li>
@@ -218,11 +218,11 @@ export default function PricingPage() {
       </section>
 
       {/* Standalone Products */}
-      <section className="py-16 px-4 bg-[#0A1628]/30">
+      <section className="py-16 px-4 bg-card/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-2">Standalone Products</h2>
-            <p className="text-[#6B7D95]">Additional products that integrate with TALOS.</p>
+            <p className="text-muted-foreground">Additional products that integrate with TALOS.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {standaloneProducts.map((product, index) => (
@@ -232,18 +232,18 @@ export default function PricingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 rounded-xl border border-[#1A2D44] bg-[#060B14]/50"
+                className="p-6 rounded-xl border border-border bg-background/50"
               >
                 <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                <p className="text-sm text-[#6B7D95] mb-4">{product.description}</p>
+                <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
                 <div className="space-y-2">
                   {product.tiers.map((tier) => (
-                    <div key={tier.name} className="flex items-center justify-between p-3 rounded-lg bg-[#0A1628]">
+                    <div key={tier.name} className="flex items-center justify-between p-3 rounded-lg bg-card">
                       <div>
                         <span className="text-sm font-medium">{tier.name}</span>
-                        <span className="text-xs text-[#6B7D95] ml-2">{tier.desc}</span>
+                        <span className="text-xs text-muted-foreground ml-2">{tier.desc}</span>
                       </div>
-                      <span className="text-sm font-semibold text-[#00E3FD]">{tier.price}</span>
+                      <span className="text-sm font-semibold text-primary">{tier.price}</span>
                     </div>
                   ))}
                 </div>
@@ -266,9 +266,9 @@ export default function PricingPage() {
               { q: 'Do you offer discounts for annual billing?', a: 'Yes. Save 16% with annual billing on all plans.' },
               { q: 'Is my data secure?', a: 'Yes. All data is encrypted at rest (AES-256) and in transit (TLS 1.3). We are GDPR compliant and pursuing SOC 2 certification.' },
             ].map((faq, i) => (
-              <div key={i} className="p-5 rounded-xl border border-[#1A2D44] bg-[#0A1628]/30">
+              <div key={i} className="p-5 rounded-xl border border-border bg-card/30">
                 <h4 className="font-semibold mb-1">{faq.q}</h4>
-                <p className="text-sm text-[#6B7D95]">{faq.a}</p>
+                <p className="text-sm text-muted-foreground">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -279,7 +279,7 @@ export default function PricingPage() {
       <section className="py-16 px-4 text-center">
         <div className="max-w-xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">Ready to start?</h2>
-          <p className="text-[#6B7D95] mb-8">Try TALOS free for 14 days. No credit card required.</p>
+          <p className="text-muted-foreground mb-8">Try TALOS free for 14 days. No credit card required.</p>
           <Link href="/register">
             <Button size="xl">
               Start Free Trial

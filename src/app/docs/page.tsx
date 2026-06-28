@@ -93,17 +93,17 @@ export default function DocsPage() {
         <div className="text-center mb-16">
           <Badge variant="default" className="mb-4">Documentation</Badge>
           <h1 className="text-5xl font-bold mb-4 gradient-text">Documentation</h1>
-          <p className="text-[#6B7D95] max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Everything you need to master the Zerodin platform. From quickstart guides to API references.
           </p>
           
           {/* Search Bar */}
           <div className="max-w-md mx-auto mt-8 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6B7D95]" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search documentation..."
-              className="w-full h-12 rounded-xl border border-[#1A2D44] bg-[#0A1628] pl-10 pr-4 text-sm focus:border-[#00E3FD]/50 focus:outline-none focus:ring-1 focus:ring-[#00E3FD]/20 transition-all"
+              className="w-full h-12 rounded-xl border border-border bg-card pl-10 pr-4 text-sm focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all"
             />
           </div>
         </div>
@@ -117,17 +117,17 @@ export default function DocsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-6 rounded-xl border border-[#1A2D44] bg-[#0A1628]/50 hover:border-[#00E3FD]/30 transition-all duration-300"
+              className="p-6 rounded-xl border border-border bg-card/50 hover:border-primary/30 transition-all duration-300"
             >
-              <section.icon className="h-8 w-8 text-[#00E3FD] mb-4" />
+              <section.icon className="h-8 w-8 text-primary mb-4" />
               <h3 className="text-lg font-semibold mb-2">{section.title}</h3>
-              <p className="text-sm text-[#6B7D95] mb-4">{section.description}</p>
+              <p className="text-sm text-muted-foreground mb-4">{section.description}</p>
               <ul className="space-y-1.5">
                 {section.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[#6B7D95] hover:text-[#00E3FD] flex items-center gap-1.5 transition-colors py-1"
+                      className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1.5 transition-colors py-1"
                     >
                       <ArrowRight className="h-3 w-3 flex-shrink-0" />
                       {link.label}
@@ -140,9 +140,9 @@ export default function DocsPage() {
         </div>
 
         {/* API Quick Reference */}
-        <div className="mt-16 p-8 rounded-xl border border-[#1A2D44] bg-[#0A1628]/50">
+        <div className="mt-16 p-8 rounded-xl border border-border bg-card/50">
           <div className="flex items-center gap-3 mb-6">
-            <Terminal className="h-6 w-6 text-[#00E3FD]" />
+            <Terminal className="h-6 w-6 text-primary" />
             <h2 className="text-2xl font-bold">API Quick Reference</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -152,24 +152,24 @@ export default function DocsPage() {
               { method: 'GET', endpoint: '/api/v1/findings', desc: 'List all findings' },
               { method: 'GET', endpoint: '/api/v1/stats', desc: 'Dashboard statistics' },
             ].map((api) => (
-              <div key={api.endpoint} className="p-3 rounded-lg bg-[#060B14] border border-[#1A2D44]">
+              <div key={api.endpoint} className="p-3 rounded-lg bg-background border border-border">
                 <span className={`text-xs font-bold px-2 py-0.5 rounded ${
                   api.method === 'POST' ? 'bg-green-500/10 text-green-400' : 'bg-blue-500/10 text-blue-400'
                 }`}>
                   {api.method}
                 </span>
-                <code className="block text-xs text-[#00E3FD] mt-2 font-mono">{api.endpoint}</code>
-                <span className="text-xs text-[#6B7D95] mt-1 block">{api.desc}</span>
+                <code className="block text-xs text-primary mt-2 font-mono">{api.endpoint}</code>
+                <span className="text-xs text-muted-foreground mt-1 block">{api.desc}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Help CTA */}
-        <div className="mt-16 text-center p-8 rounded-xl border border-[#1A2D44] bg-[#0A1628]/50">
-          <BookOpen className="h-10 w-10 text-[#00E3FD] mx-auto mb-4" />
+        <div className="mt-16 text-center p-8 rounded-xl border border-border bg-card/50">
+          <BookOpen className="h-10 w-10 text-primary mx-auto mb-4" />
           <h3 className="text-xl font-semibold mb-2">Can't find what you need?</h3>
-          <p className="text-sm text-[#6B7D95] mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             Our community and support team are here to help.
           </p>
           <div className="flex gap-4 justify-center">
