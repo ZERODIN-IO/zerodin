@@ -21,3 +21,6 @@ export type { AuroraBackgroundProps } from "./aurora-background";
 
 export { Reveal } from "./reveal";
 export type { RevealProps, RevealDirection } from "./reveal";
+
+export { LightParticles } from "./light-particles";
+export type { LightParticlesProps } from "./light-particles";
