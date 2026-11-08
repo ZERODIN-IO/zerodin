@@ -100,48 +100,95 @@ body {
 /* Depth planes and atmospheric backgrounds.
    These extend the existing --background without replacing it. */
 @theme inline {
-  /* Depth layers (dark mode) */
-  --color-void: #04060B;
-  --color-abyss: #070B12;
-  --color-deep: #0C1220;
+  /* Depth layers */
+  --color-void: var(--void);
+  --color-abyss: var(--abyss);
+  --color-deep: var(--deep);
 
   /* Aurora accents */
   --color-aurora-cyan: #00E3FD;
   --color-aurora-violet: #7C5CFF;
   --color-aurora-teal: #00FFA3;
 
-  /* Glass material tints (dark mode) */
-  --color-glass-clear: rgba(255, 255, 255, 0.04);
-  --color-glass-frosted: rgba(180, 200, 220, 0.06);
-  --color-glass-tinted: rgba(0, 227, 253, 0.03);
-  --color-glass-shadow: rgba(0, 0, 0, 0.5);
+  /* Glass material tints */
+  --color-glass-clear: var(--glass-clear);
+  --color-glass-frosted: var(--glass-frosted);
+  --color-glass-tinted: var(--glass-tinted);
+  --color-glass-shadow: var(--glass-shadow);
 
   /* Text hierarchy tokens */
-  --color-text-primary: #F4F6F8;
-  --color-text-secondary: #A8B0BC;
-  --color-text-tertiary: #5C6675;
-  --color-text-accent: #00E3FD;
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-accent: var(--text-accent);
+
+  /* Surface and border tokens — for nav, footer, cards */
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+
+  /* Status tokens — replace hard-coded green/amber */
+  --color-success: var(--success);
+  --color-warning: var(--warning);
 
   /* Display serif — the personality font */
   --font-display: var(--font-instrument-serif);
 }
 
-/* Light mode overrides for the glass tokens.
-   The theme system toggles `.light` on <html>. */
+/* === LIGHT MODE COMPLETION === */
+
+/* Dark mode default values for the tokens referenced by the @theme inline block.
+   These are the values that were previously hard-coded directly in @theme inline
+   and could not be overridden by .light. Now they live in :root and .light so
+   the theme system can flip them. */
+
+:root {
+  --void: #04060B;
+  --abyss: #070B12;
+  --deep: #0C1220;
+
+  --glass-clear: rgba(255, 255, 255, 0.04);
+  --glass-frosted: rgba(180, 200, 220, 0.06);
+  --glass-tinted: rgba(0, 227, 253, 0.03);
+  --glass-shadow: rgba(0, 0, 0, 0.5);
+
+  --text-primary: #F4F6F8;
+  --text-secondary: #A8B0BC;
+  --text-tertiary: #5C6675;
+  --text-accent: #00E3FD;
+
+  --surface: #0A1628;
+  --surface-hover: #111D2E;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+
+  --success: #4ADE80;
+  --warning: #FBBF24;
+}
+
 .light {
-  --color-void: #EEF1F5;
-  --color-abyss: #E4E9EF;
-  --color-deep: #DCE3EB;
+  --void: #EEF1F5;
+  --abyss: #E4E9EF;
+  --deep: #DCE3EB;
 
-  --color-glass-clear: rgba(255, 255, 255, 0.55);
-  --color-glass-frosted: rgba(255, 255, 255, 0.7);
-  --color-glass-tinted: rgba(0, 144, 168, 0.06);
-  --color-glass-shadow: rgba(0, 0, 0, 0.08);
+  --glass-clear: rgba(255, 255, 255, 0.55);
+  --glass-frosted: rgba(255, 255, 255, 0.7);
+  --glass-tinted: rgba(0, 144, 168, 0.06);
+  --glass-shadow: rgba(0, 0, 0, 0.08);
 
-  --color-text-primary: #0A0E14;
-  --color-text-secondary: #3A4554;
-  --color-text-tertiary: #707C8C;
-  --color-text-accent: #0090A8;
+  --text-primary: #0A0E14;
+  --text-secondary: #3A4554;
+  --text-tertiary: #707C8C;
+  --text-accent: #0090A8;
+
+  --surface: #FFFFFF;
+  --surface-hover: #F1F5F9;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.15);
+
+  --success: #16A34A;
+  --warning: #B45309;
 }
 
 /* Specular highlight rule — a single 1px bright line on the upper-left
@@ -167,8 +214,8 @@ body {
 .light .glass-specular::before {
   background: linear-gradient(
     to right,
-    rgba(255, 255, 255, 0.9),
-    rgba(255, 255, 255, 0)
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0)
   );
 }
 
