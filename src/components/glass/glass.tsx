@@ -36,7 +36,8 @@ type GlassMaterial =
   | "bubble"
   | "water"
   | "block"
-  | "liquid";
+  | "liquid"
+  | "aurora";
 
 // Deeper shadow stacks than T4. The cast and ambient layers are
 // pushed further out so every panel reads as clearly floating above
@@ -114,6 +115,16 @@ const materialClasses: Record<GlassMaterial, string> = {
     "backdrop-blur-xl bg-[rgba(0,227,253,0.04)] border-2 border-[rgba(0,227,253,0.12)]",
     "glass-liquid",
     "shadow-[0_4px_16px_rgba(0,227,253,0.12),0_16px_40px_rgba(0,227,253,0.06),0_32px_64px_rgba(0,0,0,0.08)]",
+    "overflow-hidden"
+  ),
+  // Aurora Glass — a dichroic panel with cyan-to-teal internal gradient
+  // and a bright cyan top edge. The .glass-aurora class triggers the
+  // CSS pseudo-elements for the internal color and top edge. The outer
+  // shadow is cyan-tinted so the panel feels lit from inside.
+  aurora: cn(
+    "backdrop-blur-xl bg-white/[0.04] border border-[rgba(0,227,253,0.15)]",
+    "glass-aurora",
+    "shadow-[0_4px_12px_rgba(0,227,253,0.08),0_16px_32px_rgba(0,227,253,0.05),0_32px_64px_rgba(0,0,0,0.08)]",
     "overflow-hidden"
   ),
 };

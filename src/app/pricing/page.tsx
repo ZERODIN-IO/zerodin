@@ -171,7 +171,7 @@ export default function PricingPage() {
           {otaSentinelTiers.map((tier, index) => (
             <Reveal key={tier.name} delay={0.1 * index}>
               <Glass
-                material="clear"
+                material="aurora"
                 className="p-8 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8"
               >
                 <div className="md:col-span-5">

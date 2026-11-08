@@ -156,8 +156,7 @@ export default function AthelosPage() {
           {deployments.map((deployment, index) => (
             <Reveal key={deployment.name} delay={0.1 * index}>
               <Glass
-                material="bubble"
-                specular={false}
+                material="aurora"
                 className="aspect-square p-8 flex flex-col items-center justify-center text-center"
               >
                 <DisplayText size="md" as="h3" className="mb-3 text-xl">
