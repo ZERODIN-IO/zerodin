@@ -328,3 +328,90 @@ body {
     rgba(0, 0, 0, 0)
   );
 }
+
+
+/* === LIQUID GLASS VARIANT === */
+
+/* A curved top arc — a radial gradient centered at the top-middle,
+   bright at the top, fading downward. This creates the illusion that
+   the top of the panel is bulging outward like the top of a droplet. */
+.glass-liquid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: radial-gradient(
+    ellipse 80% 100% at 50% 0%,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.05) 40%,
+    transparent 70%
+  );
+  border-radius: 16px 16px 0 0;
+  pointer-events: none;
+}
+
+/* A soft darker core in the lower half — the volume of the bubble
+   absorbs light near the bottom, giving it mass. */
+.glass-liquid::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: radial-gradient(
+    ellipse 90% 100% at 50% 100%,
+    rgba(0, 0, 0, 0.10) 0%,
+    rgba(0, 0, 0, 0.03) 50%,
+    transparent 80%
+  );
+  border-radius: 0 0 16px 16px;
+  pointer-events: none;
+}
+
+/* The gradient border — brighter at the top-left, darker at the
+   bottom-right, following the curvature of the light on a bubble.
+   Applied via a wrapper class on the border itself. */
+.glass-liquid {
+  border-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.30) 0%,
+    rgba(255, 255, 255, 0.10) 30%,
+    rgba(255, 255, 255, 0.05) 70%,
+    rgba(0, 0, 0, 0.15) 100%
+  ) 1;
+}
+
+/* Corner specular dots — two small bright points at the top corners,
+   like light catching the rounded edges of a bubble. Rendered as
+   box-shadow on a zero-size element. */
+
+.light .glass-liquid::before {
+  background: radial-gradient(
+    ellipse 80% 100% at 50% 0%,
+    rgba(255, 255, 255, 0.90) 0%,
+    rgba(255, 255, 255, 0.20) 40%,
+    transparent 70%
+  );
+}
+
+.light .glass-liquid::after {
+  background: radial-gradient(
+    ellipse 90% 100% at 50% 100%,
+    rgba(0, 0, 0, 0.06) 0%,
+    rgba(0, 0, 0, 0.02) 50%,
+    transparent 80%
+  );
+}
+
+.light .glass-liquid {
+  border-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(200, 220, 235, 0.60) 30%,
+    rgba(200, 220, 235, 0.40) 70%,
+    rgba(0, 0, 0, 0.10) 100%
+  ) 1;
+}

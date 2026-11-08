@@ -105,7 +105,7 @@ export default function HomePage() {
             className="mx-auto max-w-3xl"
           >
             <Glass
-              material="crystal"
+              material="liquid"
               className="px-8 py-14 md:px-16 md:py-20 text-center"
             >
               <DisplayText size="xl" as="h1" className="mb-6">
@@ -133,7 +133,7 @@ export default function HomePage() {
               >
                 <Link href={`/products/${product.slug}`} className="block">
                   <Glass
-                    material={product.material}
+                    material="liquid"
                     hoverable
                     className="p-8 md:p-10 h-full"
                   >

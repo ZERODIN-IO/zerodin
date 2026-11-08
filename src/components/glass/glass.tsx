@@ -35,7 +35,8 @@ type GlassMaterial =
   | "thick"
   | "bubble"
   | "water"
-  | "block";
+  | "block"
+  | "liquid";
 
 // Deeper shadow stacks than T4. The cast and ambient layers are
 // pushed further out so every panel reads as clearly floating above
@@ -103,6 +104,16 @@ const materialClasses: Record<GlassMaterial, string> = {
     "backdrop-blur-xl bg-white/[0.10] border-2 border-white/[0.12]",
     "glass-block",
     "shadow-[0_4px_12px_rgba(0,0,0,0.28),0_20px_40px_rgba(0,0,0,0.16),0_48px_80px_rgba(0,0,0,0.08)]",
+    "overflow-hidden"
+  ),
+  // Liquid Glass — a droplet or soap bubble. Cyan-tinted, curved top
+  // arc via CSS ::before, soft internal core via CSS ::after, gradient
+  // border brighter at the top-left. The outer shadow is cyan-tinted
+  // so the panel looks like it glows from inside.
+  liquid: cn(
+    "backdrop-blur-xl bg-[rgba(0,227,253,0.04)] border-2 border-[rgba(0,227,253,0.12)]",
+    "glass-liquid",
+    "shadow-[0_4px_16px_rgba(0,227,253,0.12),0_16px_40px_rgba(0,227,253,0.06),0_32px_64px_rgba(0,0,0,0.08)]",
     "overflow-hidden"
   ),
 };
