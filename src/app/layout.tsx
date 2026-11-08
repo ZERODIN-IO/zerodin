@@ -23,14 +23,14 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: 'ZERODIN — See the Unseen',
-  description: 'Universal cybersecurity platform. Zero-day detection. Automated pentesting. Continuous monitoring. Threat intelligence.',
-  keywords: ['cybersecurity', 'pentesting', 'zero-day', 'vulnerability scanning', 'threat intelligence'],
+  title: 'ZERODIN — Security infrastructure for the operators',
+  description: 'Two products, both shipped. ATHELOS for cybersecurity operators. OTA Sentinel for telecom SIM security. Self-hosted, audited, no cloud AI on client data.',
+  keywords: ['cybersecurity', 'penetration testing', 'SIM security', 'OTA management', 'self-hosted', 'ATHELOS', 'OTA Sentinel'],
   openGraph: {
-    title: 'ZERODIN — See the Unseen',
-    description: 'Universal cybersecurity platform protecting against the unknown.',
-    url: 'https://zerodin.io',
-    siteName: 'Zerodin',
+    title: 'ZERODIN — Security infrastructure for the operators',
+    description: 'Two products, both shipped. ATHELOS and OTA Sentinel.',
+    url: 'https://zerodin.pro',
+    siteName: 'ZERODIN',
   },
 };
 
