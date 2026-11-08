@@ -83,7 +83,6 @@ const baseClasses = cn(
   "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aurora-cyan/50 focus-visible:ring-offset-2 focus-visible:ring-offset-void",
   "disabled:pointer-events-none disabled:opacity-50",
-  "glass-specular",
   shadowBase,
   innerDepth,
   shadowHover,
