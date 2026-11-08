@@ -68,7 +68,7 @@ export default function BlogPage() {
             <Reveal key={post.slug} delay={0.1 * index}>
               <Link href={`/blog/${post.slug}`} className="block h-full">
                 <Glass
-                  material="clear"
+                  material="block"
                   hoverable
                   className="p-6 md:p-8 h-full flex flex-col"
                 >

@@ -13,6 +13,8 @@
 //      the panel float above the surface
 //
 // The material prop selects the tint, blur, and shadow intensity.
+// The 'block' material adds CSS ::before and ::after pseudo-elements
+// via the .glass-block class for a bright top edge and inner shadow band.
 // The hoverable prop makes the panel lift when hovered — this is what
 // makes an interactive card read as floating rather than resting.
 //
@@ -32,7 +34,8 @@ type GlassMaterial =
   | "aurora-tinted"
   | "thick"
   | "bubble"
-  | "water";
+  | "water"
+  | "block";
 
 // Deeper shadow stacks than T4. The cast and ambient layers are
 // pushed further out so every panel reads as clearly floating above
@@ -92,6 +95,15 @@ const materialClasses: Record<GlassMaterial, string> = {
     "backdrop-blur-xl bg-white/[0.04] border border-white/[0.08]",
     shadowStack.medium,
     innerDepth
+  ),
+  // Block Glass — a solid slab. 10% white tint, 2px lighter border,
+  // and the .glass-block class triggers the CSS ::before and ::after
+  // pseudo-elements that create the bright top edge and inner shadow.
+  block: cn(
+    "backdrop-blur-xl bg-white/[0.10] border-2 border-white/[0.12]",
+    "glass-block",
+    "shadow-[0_4px_12px_rgba(0,0,0,0.28),0_20px_40px_rgba(0,0,0,0.16),0_48px_80px_rgba(0,0,0,0.08)]",
+    "overflow-hidden"
   ),
 };
 

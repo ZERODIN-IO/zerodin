@@ -69,7 +69,7 @@ export default function ProductsPage() {
               className={index === 1 ? "md:mt-12" : ""}
             >
               <Glass
-                material={product.material}
+                material="block"
                 hoverable
                 className="h-full p-8 md:p-10 flex flex-col"
               >
