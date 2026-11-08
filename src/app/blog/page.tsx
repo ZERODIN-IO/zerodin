@@ -1,8 +1,13 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { ArrowRight, Calendar, User } from "lucide-react";
+import {
+  Glass,
+  DisplayText,
+  BodyText,
+  Section,
+  Reveal,
+} from "@/components/glass";
 
 const posts = [
   {
@@ -36,49 +41,70 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <div className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <Badge variant="default" className="mb-4">Blog</Badge>
-          <h1 className="text-5xl font-bold mb-4 gradient-text">Writing</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Occasional notes on the two products ZERODIN ships, the
-            engineering behind them, and what it is like to build security
-            software from Sierra Leone.
-          </p>
-        </div>
+    <main className="min-h-screen pt-24">
+      <Section spacing="lg">
+        <Reveal>
+          <div className="text-center mb-12">
+            <BodyText
+              size="sm"
+              tone="tertiary"
+              className="uppercase tracking-[0.2em] mb-4"
+            >
+              Blog
+            </BodyText>
+            <DisplayText size="lg" as="h1" className="mb-4">
+              Writing.
+            </DisplayText>
+            <BodyText size="base" tone="secondary" className="max-w-2xl mx-auto">
+              Occasional notes on the two products ZERODIN ships, the
+              engineering behind them, and what it is like to build security
+              software from Sierra Leone.
+            </BodyText>
+          </div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {posts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <article className="group p-6 rounded-xl border border-border bg-card hover:border-primary/30 transition-all duration-300 h-full glow-cyan">
-                <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
-                  <span className="flex items-center gap-1">
-                    <Calendar className="h-3 w-3" /> {post.date}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <User className="h-3 w-3" /> {post.author}
-                  </span>
-                </div>
-                <h2 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
-                  {post.title}
-                </h2>
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                  {post.excerpt}
-                </p>
-                <div className="flex items-center justify-between">
-                  <Badge variant="secondary" className="text-xs">
-                    {post.category}
-                  </Badge>
-                  <span className="text-xs text-primary flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    Read More <ArrowRight className="h-3 w-3" />
-                  </span>
-                </div>
-              </article>
-            </Link>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {posts.map((post, index) => (
+            <Reveal key={post.slug} delay={0.1 * index}>
+              <Link href={`/blog/${post.slug}`} className="block h-full">
+                <Glass
+                  material="clear"
+                  hoverable
+                  className="p-6 md:p-8 h-full flex flex-col"
+                >
+                  <div className="flex items-center gap-3 mb-4 text-xs">
+                    <BodyText size="sm" tone="tertiary">
+                      {post.date}
+                    </BodyText>
+                    <span className="h-1 w-1 rounded-full bg-border-subtle" />
+                    <BodyText size="sm" tone="tertiary">
+                      {post.author}
+                    </BodyText>
+                  </div>
+                  <DisplayText size="md" as="h2" className="text-xl md:text-2xl mb-3">
+                    {post.title}
+                  </DisplayText>
+                  <BodyText size="sm" tone="secondary" className="mb-6 flex-1">
+                    {post.excerpt}
+                  </BodyText>
+                  <div className="flex items-center justify-between">
+                    <BodyText
+                      size="sm"
+                      tone="secondary"
+                      className="uppercase tracking-wider text-text-accent"
+                    >
+                      {post.category}
+                    </BodyText>
+                    <BodyText size="sm" tone="secondary" className="text-text-accent">
+                      Read more →
+                    </BodyText>
+                  </div>
+                </Glass>
+              </Link>
+            </Reveal>
           ))}
         </div>
-      </div>
-    </div>
+      </Section>
+    </main>
   );
 }

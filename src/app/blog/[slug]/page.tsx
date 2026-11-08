@@ -1,7 +1,13 @@
 import { notFound } from "next/navigation";
-import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { ArrowLeft, Calendar, User, Clock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import {
+  Glass,
+  DisplayText,
+  BodyText,
+  Section,
+  Reveal,
+} from "@/components/glass";
 
 interface BlogPost {
   slug: string;
@@ -191,63 +197,83 @@ export default async function BlogPostPage({
   const paragraphs = post.content.split("\n\n");
 
   return (
-    <div className="py-20 px-4">
-      <div className="max-w-3xl mx-auto">
+    <main className="min-h-screen pt-24">
+      <Section spacing="lg">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors mb-8"
         >
           <ArrowLeft className="h-4 w-4" />
           All posts
         </Link>
 
-        <div className="mb-8">
-          <Badge variant="default" className="mb-4">
-            {post.category}
-          </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
-            {post.title}
-          </h1>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1.5">
-              <Calendar className="h-4 w-4" /> {post.date}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <User className="h-4 w-4" /> {post.author}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Clock className="h-4 w-4" /> {post.readTime}
-            </span>
-          </div>
-        </div>
+        <Reveal>
+          <Glass material="crystal" className="p-8 md:p-14">
+            <div className="mb-8">
+              <BodyText
+                size="sm"
+                tone="tertiary"
+                className="uppercase tracking-[0.2em] mb-4"
+              >
+                {post.category}
+              </BodyText>
+              <DisplayText size="lg" as="h1" className="mb-6">
+                {post.title}
+              </DisplayText>
+              <div className="flex flex-wrap items-center gap-4 text-sm">
+                <BodyText size="sm" tone="tertiary">
+                  {post.date}
+                </BodyText>
+                <span className="h-1 w-1 rounded-full bg-border-subtle" />
+                <BodyText size="sm" tone="tertiary">
+                  {post.author}
+                </BodyText>
+                <span className="h-1 w-1 rounded-full bg-border-subtle" />
+                <BodyText size="sm" tone="tertiary">
+                  {post.readTime}
+                </BodyText>
+              </div>
+            </div>
 
-        <article className="prose prose-invert max-w-none">
-          {paragraphs.map((para, i) => {
-            if (para.startsWith("## ")) {
-              return (
-                <h2 key={i} className="text-2xl font-semibold mt-10 mb-4 text-foreground">
-                  {para.replace("## ", "")}
-                </h2>
-              );
-            }
-            return (
-              <p key={i} className="text-muted-foreground leading-relaxed mb-6">
-                {para}
-              </p>
-            );
-          })}
-        </article>
+            <article>
+              {paragraphs.map((para, i) => {
+                if (para.startsWith("## ")) {
+                  return (
+                    <DisplayText
+                      key={i}
+                      size="md"
+                      as="h2"
+                      className="text-xl md:text-2xl mt-10 mb-4"
+                    >
+                      {para.replace("## ", "")}
+                    </DisplayText>
+                  );
+                }
+                return (
+                  <BodyText
+                    key={i}
+                    size="base"
+                    tone="secondary"
+                    className="mb-6"
+                  >
+                    {para}
+                  </BodyText>
+                );
+              })}
+            </article>
 
-        <div className="mt-16 pt-8 border-t border-border">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to all posts
-          </Link>
-        </div>
-      </div>
-    </div>
+            <div className="mt-12 pt-8 border-t border-border-subtle">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Back to all posts
+              </Link>
+            </div>
+          </Glass>
+        </Reveal>
+      </Section>
+    </main>
   );
 }
