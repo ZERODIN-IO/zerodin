@@ -134,7 +134,8 @@ export default function HomePage() {
                 <Link href={`/products/${product.slug}`} className="block">
                   <Glass
                     material={product.material}
-                    className="p-8 md:p-10 h-full transition-all duration-300 hover:bg-white/[0.10] hover:-translate-y-1"
+                    hoverable
+                    className="p-8 md:p-10 h-full"
                   >
                     <DisplayText size="md" as="h2" className="mb-3">
                       {product.name}

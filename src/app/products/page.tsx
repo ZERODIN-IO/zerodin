@@ -70,6 +70,7 @@ export default function ProductsPage() {
             >
               <Glass
                 material={product.material}
+                hoverable
                 className="h-full p-8 md:p-10 flex flex-col"
               >
                 <DisplayText size="md" as="h2" className="mb-3">

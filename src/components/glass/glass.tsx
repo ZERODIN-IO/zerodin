@@ -1,22 +1,27 @@
+"use client";
+
 // The single glass surface primitive used everywhere on the site.
 //
-// Every panel is built from the same six layers:
+// Each panel is built from layers that create physical depth:
+//
 //   1. backdrop-blur + backdrop-saturate — the frost
 //   2. base background tint — the color transmission
-//   3. 1px border — the edge
-//   4. ::before specular highlight — the light catching the upper-left
-//   5. inset shadow — the inner depth
-//   6. optional SVG displacement filter — the water material only
+//   3. border — the edge
+//   4. inner depth via inset shadow — a bright top line and a dark bottom
+//      line, giving the panel thickness
+//   5. outer shadows — contact + cast + ambient, three layers that make
+//      the panel float above the surface
 //
-// The material prop selects layers 1-2-3. The specular prop controls
-// layer 4 (default on). The water material applies layer 6.
+// The material prop selects the tint, blur, and shadow intensity.
+// The hoverable prop makes the panel lift when hovered — this is what
+// makes an interactive card read as floating rather than resting.
 //
-// Dark-mode and light-mode variants come from the .light class on
-// <html> which is set by ThemeProvider. The tint and border classes
-// below are tuned for dark mode; .light overrides in globals.css
-// adjust the base colors that sit behind the tint.
+// Dark-mode and light-mode values come from the token system in
+// globals.css. Every color class used below flips when the .light class
+// is applied to <html>.
 
 import { forwardRef, type ElementType, type ReactNode } from "react";
+import { motion, type HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type GlassMaterial =
@@ -29,33 +34,72 @@ type GlassMaterial =
   | "bubble"
   | "water";
 
-const materialClasses: Record<GlassMaterial, string> = {
-  // Default panel — the workhorse. Subtle tint, standard blur.
-  clear: "backdrop-blur-xl bg-white/[0.04] border-white/[0.08]",
-  // Heavier blur, less transparent — for modals and dropdowns.
-  frosted: "backdrop-blur-2xl bg-white/[0.06] border-white/[0.06]",
-  // Brightest glass — for the featured panels that need to pop.
-  crystal: "backdrop-blur-xl bg-white/[0.08] border-white/[0.12]",
-  // Dark recessed glass — for nav backgrounds and footers.
-  smoked: "backdrop-blur-lg bg-black/[0.30] border-white/[0.04]",
-  // Cyan tinted — for the hero only, used with restraint.
-  "aurora-tinted":
-    "backdrop-blur-2xl bg-[rgba(0,227,253,0.03)] border-[rgba(0,227,253,0.15)]",
-  // Deepest blur — for large section containers.
-  thick: "backdrop-blur-3xl bg-white/[0.05] border-white/[0.08]",
-  // Circular accent objects — decorative, not for content.
-  bubble: "backdrop-blur-md bg-white/[0.10] border-white/[0.15] rounded-full",
-  // Water material — SVG displacement added via filter class below.
-  // The filter reference (#glass-displacement) is defined in the site's
-  // inline SVG defs (added in Phase 7 with the hero). Until then, the
-  // water material renders as clear with a slight tint shift.
-  water: "backdrop-blur-xl bg-white/[0.04] border-white/[0.08]",
+// Deeper shadow stacks than T4. The cast and ambient layers are
+// pushed further out so every panel reads as clearly floating above
+// the page, not resting on it.
+const shadowStack = {
+  soft: "shadow-[0_4px_10px_rgba(0,0,0,0.22),0_16px_32px_rgba(0,0,0,0.12),0_36px_72px_rgba(0,0,0,0.06)]",
+  medium: "shadow-[0_6px_16px_rgba(0,0,0,0.26),0_24px_48px_rgba(0,0,0,0.14),0_56px_96px_rgba(0,0,0,0.08)]",
+  strong: "shadow-[0_8px_20px_rgba(0,0,0,0.30),0_32px_64px_rgba(0,0,0,0.18),0_72px_128px_rgba(0,0,0,0.10)]",
+  glow: "shadow-[0_6px_20px_rgba(0,227,253,0.10),0_24px_48px_rgba(0,227,253,0.06),0_4px_10px_rgba(0,0,0,0.18)]",
 };
 
-interface GlassProps<T extends ElementType = "div"> {
-  as?: T;
+const innerDepth =
+  "shadow-[inset_0_1px_0_rgba(255,255,255,0.06),inset_0_-1px_0_rgba(0,0,0,0.10)]";
+
+// The hover shadow is larger than the resting shadow. When a card
+// lifts 4px on hover, the shadow expands to compensate — this is
+// what reads as "the panel is now further from the page."
+const hoverShadow =
+  "hover:shadow-[0_12px_28px_rgba(0,0,0,0.32),0_40px_80px_rgba(0,0,0,0.20),0_80px_140px_rgba(0,0,0,0.12)]";
+
+const materialClasses: Record<GlassMaterial, string> = {
+  clear: cn(
+    "backdrop-blur-xl bg-white/[0.04] border border-white/[0.08]",
+    shadowStack.medium,
+    innerDepth
+  ),
+  frosted: cn(
+    "backdrop-blur-2xl bg-white/[0.06] border border-white/[0.06]",
+    shadowStack.medium,
+    innerDepth
+  ),
+  crystal: cn(
+    "backdrop-blur-xl bg-white/[0.08] border border-white/[0.12]",
+    shadowStack.strong,
+    innerDepth
+  ),
+  smoked: cn(
+    "backdrop-blur-lg bg-black/[0.30] border border-white/[0.04]",
+    shadowStack.soft,
+    innerDepth
+  ),
+  "aurora-tinted": cn(
+    "backdrop-blur-2xl bg-[rgba(0,227,253,0.03)] border border-[rgba(0,227,253,0.15)]",
+    shadowStack.glow,
+    innerDepth
+  ),
+  thick: cn(
+    "backdrop-blur-3xl bg-white/[0.05] border border-white/[0.08]",
+    shadowStack.strong,
+    innerDepth
+  ),
+  bubble: cn(
+    "backdrop-blur-md bg-white/[0.10] border border-white/[0.15] rounded-full",
+    shadowStack.soft
+  ),
+  water: cn(
+    "backdrop-blur-xl bg-white/[0.04] border border-white/[0.08]",
+    shadowStack.medium,
+    innerDepth
+  ),
+};
+
+interface GlassProps extends Omit<HTMLMotionProps<"div">, "ref"> {
+  as?: ElementType;
   material?: GlassMaterial;
   specular?: boolean;
+  hoverable?: boolean;
   className?: string;
   children?: ReactNode;
 }
@@ -65,24 +109,38 @@ export const Glass = forwardRef<HTMLDivElement, GlassProps>(
     {
       as: Component = "div",
       material = "clear",
-      specular = true,
+      specular,
+      hoverable = false,
       className,
       children,
       ...rest
     },
     ref
   ) {
+    const classes = cn(
+      "relative rounded-2xl",
+      materialClasses[material],
+      hoverable && hoverShadow,
+      hoverable && "transition-shadow duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+      className
+    );
+
+    if (hoverable) {
+      return (
+        <motion.div
+          ref={ref}
+          className={classes}
+          whileHover={{ y: -4 }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          {...rest}
+        >
+          {children}
+        </motion.div>
+      );
+    }
+
     return (
-      <Component
-        ref={ref}
-        className={cn(
-          "relative rounded-2xl border",
-          materialClasses[material],
-          specular && "glass-specular",
-          className
-        )}
-        {...rest}
-      >
+      <Component ref={ref} className={classes} {...rest}>
         {children}
       </Component>
     );
