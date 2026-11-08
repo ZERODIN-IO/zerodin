@@ -55,6 +55,12 @@ export function Navbar() {
                   className="relative"
                   onMouseEnter={() => setProductsOpen(true)}
                   onMouseLeave={() => setProductsOpen(false)}
+                  onFocus={() => setProductsOpen(true)}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                      setProductsOpen(false);
+                    }
+                  }}
                 >
                   <Link
                     href={item.href}
