@@ -93,3 +93,135 @@ body {
     linear-gradient(90deg, rgba(0, 227, 253, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
+
+
+/* === LIQUID GLASS SYSTEM === */
+
+/* Depth planes and atmospheric backgrounds.
+   These extend the existing --background without replacing it. */
+@theme inline {
+  /* Depth layers (dark mode) */
+  --color-void: #04060B;
+  --color-abyss: #070B12;
+  --color-deep: #0C1220;
+
+  /* Aurora accents */
+  --color-aurora-cyan: #00E3FD;
+  --color-aurora-violet: #7C5CFF;
+  --color-aurora-teal: #00FFA3;
+
+  /* Glass material tints (dark mode) */
+  --color-glass-clear: rgba(255, 255, 255, 0.04);
+  --color-glass-frosted: rgba(180, 200, 220, 0.06);
+  --color-glass-tinted: rgba(0, 227, 253, 0.03);
+  --color-glass-shadow: rgba(0, 0, 0, 0.5);
+
+  /* Text hierarchy tokens */
+  --color-text-primary: #F4F6F8;
+  --color-text-secondary: #A8B0BC;
+  --color-text-tertiary: #5C6675;
+  --color-text-accent: #00E3FD;
+
+  /* Display serif — the personality font */
+  --font-display: var(--font-instrument-serif);
+}
+
+/* Light mode overrides for the glass tokens.
+   The theme system toggles `.light` on <html>. */
+.light {
+  --color-void: #EEF1F5;
+  --color-abyss: #E4E9EF;
+  --color-deep: #DCE3EB;
+
+  --color-glass-clear: rgba(255, 255, 255, 0.55);
+  --color-glass-frosted: rgba(255, 255, 255, 0.7);
+  --color-glass-tinted: rgba(0, 144, 168, 0.06);
+  --color-glass-shadow: rgba(0, 0, 0, 0.08);
+
+  --color-text-primary: #0A0E14;
+  --color-text-secondary: #3A4554;
+  --color-text-tertiary: #707C8C;
+  --color-text-accent: #0090A8;
+}
+
+/* Specular highlight rule — a single 1px bright line on the upper-left
+   edge of every glass surface. This is what makes the material read
+   as glass rather than plastic. Applied via .glass-specular utility. */
+.glass-specular {
+  position: relative;
+}
+.glass-specular::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 30%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0)
+  );
+  pointer-events: none;
+}
+.light .glass-specular::before {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+/* The aurora — three radial gradients drifting in three-phase sync.
+   Rendered as a fixed full-viewport element behind everything.
+   Zero JavaScript — pure CSS keyframes for the drift. */
+.aurora-bg {
+  position: fixed;
+  inset: -20%;
+  z-index: -20;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 35% at 15% 20%, rgba(0, 227, 253, 0.10), transparent 70%),
+    radial-gradient(45% 40% at 85% 75%, rgba(124, 92, 255, 0.07), transparent 70%),
+    radial-gradient(35% 30% at 75% 15%, rgba(0, 255, 163, 0.05), transparent 70%);
+  filter: blur(120px);
+  animation: aurora-drift 20s ease-in-out infinite;
+}
+
+.light .aurora-bg {
+  background:
+    radial-gradient(40% 35% at 15% 20%, rgba(0, 144, 168, 0.10), transparent 70%),
+    radial-gradient(45% 40% at 85% 75%, rgba(124, 92, 255, 0.05), transparent 70%),
+    radial-gradient(35% 30% at 75% 15%, rgba(0, 168, 163, 0.04), transparent 70%);
+}
+
+@keyframes aurora-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  33%      { transform: translate3d(-24px, 12px, 0); }
+  66%      { transform: translate3d(16px, -8px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-bg { animation: none; }
+}
+
+/* The premium easing curve — every transition in the site uses it
+   except the aurora (linear) and progress indicators (ease-out). */
+:root {
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 200ms;
+  --duration-base: 400ms;
+  --duration-slow: 800ms;
+}
+
+/* Fluid typography scale. Display sizes use clamp() so they shrink
+   on mobile without a breakpoint. Body sizes stay fixed. */
+@theme inline {
+  --text-display-xl: clamp(3.5rem, 8vw, 6rem);
+  --text-display-lg: clamp(2.5rem, 5vw, 4rem);
+  --text-display-md: clamp(2rem, 3.5vw, 2.75rem);
+  --text-heading-lg: clamp(1.5rem, 2.5vw, 2rem);
+  --text-heading-md: clamp(1.25rem, 2vw, 1.5rem);
+  --text-body-lg: clamp(1.125rem, 1.5vw, 1.25rem);
+}
+
