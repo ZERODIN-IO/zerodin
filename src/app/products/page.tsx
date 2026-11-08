@@ -1,125 +1,157 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
-import { ArrowRight, Target, Eye, Globe, Zap, Server, Shield } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  Glass,
+  GlassButton,
+  DisplayText,
+  BodyText,
+  Section,
+  Reveal,
+} from "@/components/glass";
 
 const products = [
   {
-    icon: Target,
-    name: 'TALOS',
-    tagline: 'Universal Pentesting Platform',
-    description: '16 attack surfaces. 122 integrated security tools. 7-phase automated pipeline. From reconnaissance to reporting — TALOS does it all.',
-    tiers: ['Community Free', 'Pro $199/mo', 'Team $799/mo', 'Enterprise $2,999/mo'],
-    href: '/products/talos',
-    color: 'cyan',
+    slug: "athelos",
+    name: "ATHELOS",
+    tagline: "Cybersecurity command center. Self-hosted. Proven.",
+    description:
+      "A single-pane-of-glass workspace for the security operator. Five pillars, three deployment models, and a database-per-tenant Cloud that passed the OWASP cross-tenant boundary test.",
+    bullets: [
+      "Five pillars: knowledge, engagements, delivery, CRM, tooling",
+      "Three deployment models: self-hosted, dedicated, cloud",
+      "OWASP cross-tenant isolation verified — 0 rows seen across tenants",
+    ],
+    primary: { label: "Read the docs", href: "https://www.athelos.pro/docs" },
+    secondary: { label: "Learn more", href: "/products/athelos" },
+    material: "crystal" as const,
+    external: true,
   },
   {
-    icon: Eye,
-    name: 'SENTINEL',
-    tagline: 'Continuous Security Monitoring',
-    description: '24/7 automated vulnerability scanning with real-time alerts. Never miss a security gap. PCI DSS and SOC 2 compliant monitoring.',
-    tiers: ['Starter $499/mo', 'Business $1,499/mo', 'Enterprise $4,999/mo'],
-    href: '/products/sentinel',
-    color: 'orange',
-  },
-  {
-    icon: Globe,
-    name: 'ODIN',
-    tagline: 'Threat Intelligence',
-    description: 'Dark web monitoring. Zero-day detection. Credential leak alerts. Know what threats exist before they hit your organization.',
-    tiers: ['Intelligence $999/mo', 'Dark Web $2,499/mo', 'Enterprise $5,999/mo'],
-    href: '/products/odin',
-    color: 'red',
-  },
-  {
-    icon: Zap,
-    name: 'FORGE',
-    tagline: 'Automated Exploitation Engine',
-    description: 'Prove vulnerabilities are real. Automated exploitation with safety controls. Full attack narratives and impact verification.',
-    tiers: ['Pro $2,999/mo', 'Enterprise $9,999/mo'],
-    href: '/products/forge',
-    color: 'purple',
-  },
-  {
-    icon: Server,
-    name: 'NEXUS',
-    tagline: 'Cross-Platform Intelligence',
-    description: 'Correlate security data from all tools into one dashboard. ML-powered predictions. Custom integrations with SIEM, EDR, and Cloud.',
-    tiers: ['Business $1,999/mo', 'Enterprise $5,999/mo'],
-    href: '/products/nexus',
-    color: 'blue',
+    slug: "ota-sentinel",
+    name: "OTA Sentinel",
+    tagline: "SIM security for telecoms. Audit and manage.",
+    description:
+      "An enterprise platform for telecom operators and regulators. Path 1 audits SIM cards for Simjacker vulnerabilities. Path 2 manages OTA updates with the operator's own KIC/KID keys.",
+    bullets: [
+      "Simjacker audit via PC/SC reader — detects MSL=0 misconfigurations",
+      "Secure OTA management — ETSI TS 102 225 over SMPP",
+      "Row-level security in PostgreSQL, hash-chained audit log, 11/11 tests",
+    ],
+    primary: { label: "Request an audit", href: "/contact?product=ota-sentinel" },
+    secondary: { label: "Learn more", href: "/products/ota-sentinel" },
+    material: "clear" as const,
+    external: false,
   },
 ];
 
 export default function ProductsPage() {
   return (
-    <div className="py-20 px-4">
-      <div className="max-w-5xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <Badge variant="default" className="mb-4">Products</Badge>
-          <h1 className="text-5xl font-bold mb-4 gradient-text">Our Product Suite</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Five integrated products covering every aspect of offensive and defensive cybersecurity.
-            All built on the same platform. All working together.
-          </p>
-        </div>
+    <main className="min-h-screen pt-24">
+      <Section spacing="lg">
+        <Reveal>
+          <DisplayText size="lg" as="h1" className="mb-4">
+            Two products. Both shipped.
+          </DisplayText>
+          <BodyText size="lg" tone="secondary" className="max-w-2xl mb-16">
+            ATHELOS for cybersecurity operators. OTA Sentinel for telecom
+            SIM security. No aspirational roadmap, no vaporware — two
+            products that run in production today.
+          </BodyText>
+        </Reveal>
 
-        {/* Product Cards */}
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {products.map((product, index) => (
-            <motion.div
-              key={product.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+            <Reveal
+              key={product.slug}
+              delay={0.15 * index}
+              className={index === 1 ? "md:mt-12" : ""}
             >
-              <Link href={product.href}>
-                <div className="group p-8 rounded-xl border border-border bg-card/50 hover:border-primary/30 hover:bg-card transition-all duration-300 glow-cyan">
-                  <div className="flex flex-col md:flex-row gap-6 items-start">
-                    <div className="flex-shrink-0">
-                      <product.icon className="h-12 w-12 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h2 className="text-2xl font-bold mb-1">{product.name}</h2>
-                      <p className="text-sm text-primary mb-3">{product.tagline}</p>
-                      <p className="text-muted-foreground mb-4 leading-relaxed">{product.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {product.tiers.map((tier) => (
-                          <Badge key={tier} variant="secondary" className="text-xs">{tier}</Badge>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex-shrink-0 self-center">
-                      <ArrowRight className="h-6 w-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                    </div>
-                  </div>
+              <Glass
+                material={product.material}
+                className="h-full p-8 md:p-10 flex flex-col"
+              >
+                <DisplayText size="md" as="h2" className="mb-3">
+                  {product.name}
+                </DisplayText>
+                <BodyText size="base" tone="secondary" className="mb-6">
+                  {product.tagline}
+                </BodyText>
+                <BodyText size="base" tone="primary" className="mb-6">
+                  {product.description}
+                </BodyText>
+
+                <ul className="space-y-3 mb-8 flex-1">
+                  {product.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-3">
+                      <span
+                        className="mt-2 h-1 w-1 rounded-full bg-text-accent shrink-0"
+                        aria-hidden="true"
+                      />
+                      <BodyText size="sm" tone="secondary">
+                        {bullet}
+                      </BodyText>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-3">
+                  {product.external ? (
+                    <a
+                      href={product.primary.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <GlassButton variant="primary" size="md">
+                        {product.primary.label}
+                      </GlassButton>
+                    </a>
+                  ) : (
+                    <Link href={product.primary.href}>
+                      <GlassButton variant="primary" size="md">
+                        {product.primary.label}
+                      </GlassButton>
+                    </Link>
+                  )}
+                  <Link href={product.secondary.href}>
+                    <GlassButton variant="ghost" size="md">
+                      {product.secondary.label}
+                    </GlassButton>
+                  </Link>
                 </div>
-              </Link>
-            </motion.div>
+              </Glass>
+            </Reveal>
           ))}
         </div>
+      </Section>
 
-        {/* Engine Add-ons */}
-        <div className="mt-16 text-center">
-          <Badge variant="default" className="mb-4">Add-ons</Badge>
-          <h2 className="text-3xl font-bold mb-4">TALOS Premium Engines</h2>
-          <p className="text-muted-foreground mb-8">
-            Six specialized engines that extend TALOS with advanced capabilities.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {['PROMETHEUS', 'JANUS', 'NEMESIS', 'NEXUS', 'MINERVA', 'AEGIS'].map((engine) => (
-              <div key={engine} className="p-4 rounded-lg border border-border bg-card/30 text-sm font-mono text-primary">
-                {engine}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+      <Section spacing="md">
+        <Reveal>
+          <Glass material="thick" className="p-8 md:p-12 text-center">
+            <DisplayText size="md" as="h2" className="mb-4">
+              Built and operated by ZERODIN Security.
+            </DisplayText>
+            <BodyText size="base" tone="secondary" className="mb-6 max-w-xl mx-auto">
+              Every line of both products is written by one operator in
+              Freetown. No outsourcing, no venture capital, no SaaS
+              dependency.
+            </BodyText>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <Link href="/contact">
+                <GlassButton variant="secondary" size="md">
+                  Talk to us
+                </GlassButton>
+              </Link>
+            </motion.div>
+          </Glass>
+        </Reveal>
+      </Section>
+    </main>
   );
 }

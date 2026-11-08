@@ -1,292 +1,248 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
-import { 
-  Shield, ArrowRight, Zap, Target, Lock, Globe, Eye, 
-  ChevronRight, CheckCircle2, Server, Cloud, Smartphone,
-  Radio, Code, Users, Key, Terminal, Database
-} from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useRef, useEffect, useState, Suspense } from "react";
+import Link from "next/link";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  Glass,
+  GlassPanel,
+  Section,
+  Reveal,
+  GlassButton,
+  DisplayText,
+  BodyText,
+  LightParticles,
+} from "@/components/glass";
 
 const products = [
   {
-    icon: Target,
-    name: 'TALOS',
-    color: 'cyan',
-    description: 'Universal Pentesting Platform. 16 attack surfaces. 122 tools. 7-phase automated pipeline.',
-    href: '/products/talos',
-    tiers: ['Community Free', 'Pro $199/mo', 'Team $799/mo', 'Enterprise'],
+    slug: "athelos",
+    name: "ATHELOS",
+    tagline: "Cybersecurity command center. Self-hosted. Proven.",
+    material: "crystal" as const,
+    size: "large" as const,
   },
   {
-    icon: Eye,
-    name: 'SENTINEL',
-    color: 'orange',
-    description: 'Continuous Security Monitoring. 24/7 automated vulnerability scanning with real-time alerts.',
-    href: '/products/sentinel',
-    tiers: ['Starter $499/mo', 'Business $1,499/mo', 'Enterprise $4,999/mo'],
+    slug: "ota-sentinel",
+    name: "OTA Sentinel",
+    tagline: "SIM security for telecoms. Audit and manage.",
+    material: "clear" as const,
+    size: "small" as const,
   },
-  {
-    icon: Globe,
-    name: 'ODIN',
-    color: 'red',
-    description: 'Threat Intelligence. Dark web monitoring. Zero-day detection. Credential leak alerts.',
-    href: '/products/odin',
-    tiers: ['Intelligence $999/mo', 'Dark Web $2,499/mo', 'Enterprise Shield'],
-  },
-  {
-    icon: Zap,
-    name: 'FORGE',
-    color: 'purple',
-    description: 'Automated Exploitation Engine. Prove vulnerabilities are real with automated impact verification.',
-    href: '/products/forge',
-    tiers: ['Pro $2,999/mo', 'Enterprise $9,999/mo'],
-  },
-  {
-    icon: Server,
-    name: 'NEXUS',
-    color: 'blue',
-    description: 'Cross-Platform Intelligence. Correlate security data from all tools into one dashboard.',
-    href: '/products/nexus',
-    tiers: ['Business $1,999/mo', 'Enterprise $5,999/mo'],
-  },
-];
-
-const stats = [
-  { icon: Shield, value: '16', label: 'Attack Surfaces Covered' },
-  { icon: Terminal, value: '122', label: 'Integrated Security Tools' },
-  { icon: Eye, value: '1,629', label: 'CISA KEV Vulnerabilities Tracked' },
-  { icon: Lock, value: '99.9%', label: 'Uptime SLA (Enterprise)' },
-];
-
-const features = [
-  {
-    icon: Eye,
-    title: 'See All Attack Surfaces',
-    description: '16 pentesting types covering web, mobile, API, network, cloud, AD, containers, IoT, wireless, source code, and more.',
-  },
-  {
-    icon: Shield,
-    title: 'Defend Against Zero-Days',
-    description: 'ODIN monitors the dark web and exploit markets for threats targeting your infrastructure before they strike.',
-  },
-  {
-    icon: Zap,
-    title: 'Automate at Scale',
-    description: 'AI-powered pentesting that gets smarter with every scan. Run 122 tools across 16 attack surfaces automatically.',
-  },
-];
-
-const attackSurfaces = [
-  { icon: Globe, name: 'Web Applications' },
-  { icon: Smartphone, name: 'Mobile Apps' },
-  { icon: Cloud, name: 'Cloud Infrastructure' },
-  { icon: Server, name: 'External Network' },
-  { icon: Database, name: 'Internal Network' },
-  { icon: Radio, name: 'Wireless / RF' },
-  { icon: Key, name: 'Active Directory' },
-  { icon: Code, name: 'Source Code' },
-  { icon: Users, name: 'Social Engineering' },
-  { icon: Lock, name: 'Physical Security' },
 ];
 
 export default function HomePage() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const [tiltEnabled, setTiltEnabled] = useState(false);
+
+  const rotateY = useSpring(useTransform(mouseX, [-1, 1], [-3, 3]), {
+    stiffness: 150,
+    damping: 20,
+  });
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isTouch = window.matchMedia("(hover: none)").matches;
+    if (reducedMotion || isTouch) return;
+
+    setTiltEnabled(true);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!heroRef.current) return;
+      const rect = heroRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const relative = (e.clientX - centerX) / (rect.width / 2);
+      mouseX.set(Math.max(-1, Math.min(1, relative)));
+    };
+
+    const handleMouseLeave = () => mouseX.set(0);
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseleave", handleMouseLeave);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, [mouseX]);
+
   return (
-    <div className="overflow-x-hidden">
-      {/* ════════════════════════════════════════════════════════ */}
-      {/* HERO SECTION */}
-      {/* ════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[90vh] flex items-center justify-center px-4">
-        {/* Grid Background */}
-        <div className="absolute inset-0 grid-bg opacity-50" />
-        
-        {/* Glow orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full blur-[200px] opacity-[0.03]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400 rounded-full blur-[200px] opacity-[0.03]" />
-
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Badge */}
-            <div className="flex justify-center mb-6">
-              <Badge variant="default" className="text-sm px-4 py-1.5 gap-2">
-                <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                Now in Public Beta
-              </Badge>
-            </div>
-
-            {/* Logo Symbol */}
-            <div className="flex justify-center mb-8">
-              <Shield className="h-20 w-20 text-primary" style={{ filter: "drop-shadow(0 0 30px rgba(0,227,253,0.5))" }} />
-            </div>
-
-            {/* Hero Text */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6">
-              <span className="gradient-text">See the Unseen</span>
-            </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              Universal cybersecurity platform protecting organizations against zero-day threats, 
-              undiscovered vulnerabilities, and emerging attack vectors.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-              <Link href="/register">
-                <Button size="xl" className="w-full sm:w-auto">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link href="/products">
-                <Button variant="outline" size="xl" className="w-full sm:w-auto">
-                  Explore Products
-                </Button>
-              </Link>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-              {stats.map((stat) => (
-                <div key={stat.label} className="p-4 rounded-xl border border-border bg-card/50 backdrop-blur">
-                  <stat.icon className="h-5 w-5 text-primary mb-2 mx-auto" />
-                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+    <div className="relative overflow-x-hidden">
+      {/* ============================================================ */}
+      {/* HERO */}
+      {/* ============================================================ */}
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex items-center justify-center px-4 py-24"
+      >
+        {/* Depth -1: faint background glass shapes */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <Glass
+            material="bubble"
+            className="absolute w-[300px] h-[300px] opacity-[0.15] -top-20 -left-20"
+            specular={false}
+          />
+          <Glass
+            material="bubble"
+            className="absolute w-[400px] h-[400px] opacity-[0.10] -bottom-32 -right-32"
+            specular={false}
+          />
         </div>
-      </section>
 
-      {/* ════════════════════════════════════════════════════════ */}
-      {/* PRODUCTS SECTION */}
-      {/* ════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <Badge variant="default" className="mb-4">Products</Badge>
-            <h2 className="text-4xl font-bold mb-4">Our Product Suite</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Five integrated products covering every aspect of offensive and defensive cybersecurity.
-            </p>
-          </div>
+        {/* Depth 1.5: light particles */}
+        <Suspense fallback={null}>
+          <LightParticles count={200} />
+        </Suspense>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Depth 1 + 2: content */}
+        <div className="relative z-10 w-full max-w-5xl mx-auto">
+          {/* Central panel */}
+          <motion.div
+            style={{
+              rotateY: tiltEnabled ? rotateY : 0,
+              transformPerspective: 1200,
+            }}
+            className="mx-auto max-w-3xl"
+          >
+            <Glass
+              material="crystal"
+              className="px-8 py-14 md:px-16 md:py-20 text-center"
+            >
+              <DisplayText size="xl" as="h1" className="mb-6">
+                Security infrastructure for the operators.
+              </DisplayText>
+              <BodyText size="lg" tone="secondary">
+                Two products. One standard. Built and shipped.
+              </BodyText>
+            </Glass>
+          </motion.div>
+
+          {/* Floating products */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto">
             {products.map((product, index) => (
               <motion.div
-                key={product.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                key={product.slug}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.4 + index * 0.2,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className={index === 1 ? "md:mt-8 md:scale-95" : ""}
               >
-                <Link href={product.href}>
-                  <div className="group p-6 rounded-xl border border-border bg-card/50 hover:border-primary/30 hover:bg-card transition-all duration-300 h-full glow-cyan">
-                    <product.icon className="h-10 w-10 text-primary mb-4" />
-                    <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{product.description}</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {product.tiers.map((tier) => (
-                        <Badge key={tier} variant="secondary" className="text-xs">{tier}</Badge>
-                      ))}
-                    </div>
-                  </div>
+                <Link href={`/products/${product.slug}`} className="block">
+                  <Glass
+                    material={product.material}
+                    className="p-8 md:p-10 h-full transition-all duration-300 hover:bg-white/[0.10] hover:-translate-y-1"
+                  >
+                    <DisplayText size="md" as="h2" className="mb-3">
+                      {product.name}
+                    </DisplayText>
+                    <BodyText size="base" tone="secondary" className="mb-6">
+                      {product.tagline}
+                    </BodyText>
+                    <span className="inline-flex items-center gap-2 text-sm text-text-accent">
+                      Learn more
+                      <span aria-hidden="true">→</span>
+                    </span>
+                  </Glass>
                 </Link>
               </motion.div>
             ))}
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          aria-hidden="true"
+        >
+          <div className="h-12 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent" />
+        </motion.div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════ */}
-      {/* WHY ZERODIN SECTION */}
-      {/* ════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-4 bg-card/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <Badge variant="default" className="mb-4">Why Zerodin</Badge>
-            <h2 className="text-4xl font-bold mb-4">Built for the Unknown</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              The most dangerous threats are the ones nobody knows about. We see them first.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-                className="text-center p-8 rounded-xl border border-border bg-background/50"
-              >
-                <feature.icon className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════ */}
-      {/* ATTACK SURFACES SECTION */}
-      {/* ════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <Badge variant="default" className="mb-4">Coverage</Badge>
-          <h2 className="text-4xl font-bold mb-4">16 Attack Surfaces Covered</h2>
-          <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">
-            No other platform covers this breadth of security testing in a single unified interface.
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            {attackSurfaces.map((surface) => (
-              <div key={surface.name} className="p-4 rounded-xl border border-border bg-card/30 hover:border-primary/20 transition-all">
-                <surface.icon className="h-6 w-6 text-primary mb-2 mx-auto" />
-                <div className="text-xs text-muted-foreground">{surface.name}</div>
+      {/* ============================================================ */}
+      {/* POSITIONING SLIVER */}
+      {/* ============================================================ */}
+      <Section spacing="md">
+        <Reveal>
+          <Glass
+            material="thick"
+            className="max-w-4xl mx-auto p-8 md:p-12"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div>
+                <BodyText size="sm" tone="tertiary" className="uppercase tracking-[0.2em] mb-2">
+                  Self-hosted
+                </BodyText>
+                <BodyText size="base" tone="primary">
+                  No SaaS dependency.
+                </BodyText>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <div>
+                <BodyText size="sm" tone="tertiary" className="uppercase tracking-[0.2em] mb-2">
+                  Audited
+                </BodyText>
+                <BodyText size="base" tone="primary">
+                  No cloud AI on client data.
+                </BodyText>
+              </div>
+              <div>
+                <BodyText size="sm" tone="tertiary" className="uppercase tracking-[0.2em] mb-2">
+                  Shipped
+                </BodyText>
+                <BodyText size="base" tone="primary">
+                  Both products run in production.
+                </BodyText>
+              </div>
+            </div>
+          </Glass>
+        </Reveal>
+      </Section>
 
-      {/* ════════════════════════════════════════════════════════ */}
-      {/* CTA SECTION */}
-      {/* ════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="p-12 rounded-2xl border border-border bg-card/50 glow-cyan">
-            <Shield className="h-16 w-16 text-primary mx-auto mb-6" style={{ filter: "drop-shadow(0 0 20px rgba(0,227,253,0.4))" }} />
-            <h2 className="text-3xl font-bold mb-4">Ready to See the Unseen?</h2>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              Start your free trial today. No credit card required. Full access to TALOS Community Edition.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/register">
-                <Button size="xl">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button variant="outline" size="xl">
-                  Contact Sales
-                </Button>
-              </Link>
+      {/* ============================================================ */}
+      {/* CTA PANEL */}
+      {/* ============================================================ */}
+      <Section spacing="lg">
+        <Reveal>
+          <Glass
+            material="crystal"
+            className="max-w-3xl mx-auto p-10 md:p-16 text-center"
+          >
+            <DisplayText size="md" as="h2" className="mb-4">
+              Read the docs. Start the trial.
+            </DisplayText>
+            <BodyText size="base" tone="secondary" className="mb-8 max-w-lg mx-auto">
+              ATHELOS is live and taking trial signups. OTA Sentinel is
+              available through direct engagement with ZERODIN.
+            </BodyText>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <a
+                href="https://www.athelos.pro/docs"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GlassButton variant="primary" size="lg">
+                  ATHELOS docs
+                </GlassButton>
+              </a>
+              <a
+                href="https://app.athelos.pro/cloud/signup"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GlassButton variant="secondary" size="lg">
+                  Start free trial
+                </GlassButton>
+              </a>
             </div>
-            <div className="mt-8 flex items-center justify-center gap-6 text-xs text-muted-foreground">
-              <span className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3 text-green-400" /> No credit card required</span>
-              <span className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3 text-green-400" /> 14-day Pro trial</span>
-              <span className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3 text-green-400" /> Cancel anytime</span>
-            </div>
-          </div>
-        </div>
-      </section>
+          </Glass>
+        </Reveal>
+      </Section>
     </div>
   );
 }
