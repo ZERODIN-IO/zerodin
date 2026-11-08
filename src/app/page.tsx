@@ -6,6 +6,8 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   Glass,
   GlassPanel,
+  Section,
+  Reveal,
   GlassButton,
   DisplayText,
   BodyText,
@@ -162,6 +164,85 @@ export default function HomePage() {
           <div className="h-12 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent" />
         </motion.div>
       </section>
+
+      {/* ============================================================ */}
+      {/* POSITIONING SLIVER */}
+      {/* ============================================================ */}
+      <Section spacing="md">
+        <Reveal>
+          <Glass
+            material="thick"
+            className="max-w-4xl mx-auto p-8 md:p-12"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div>
+                <BodyText size="sm" tone="tertiary" className="uppercase tracking-[0.2em] mb-2">
+                  Self-hosted
+                </BodyText>
+                <BodyText size="base" tone="primary">
+                  No SaaS dependency.
+                </BodyText>
+              </div>
+              <div>
+                <BodyText size="sm" tone="tertiary" className="uppercase tracking-[0.2em] mb-2">
+                  Audited
+                </BodyText>
+                <BodyText size="base" tone="primary">
+                  No cloud AI on client data.
+                </BodyText>
+              </div>
+              <div>
+                <BodyText size="sm" tone="tertiary" className="uppercase tracking-[0.2em] mb-2">
+                  Shipped
+                </BodyText>
+                <BodyText size="base" tone="primary">
+                  Both products run in production.
+                </BodyText>
+              </div>
+            </div>
+          </Glass>
+        </Reveal>
+      </Section>
+
+      {/* ============================================================ */}
+      {/* CTA PANEL */}
+      {/* ============================================================ */}
+      <Section spacing="lg">
+        <Reveal>
+          <Glass
+            material="crystal"
+            className="max-w-3xl mx-auto p-10 md:p-16 text-center"
+          >
+            <DisplayText size="md" as="h2" className="mb-4">
+              Read the docs. Start the trial.
+            </DisplayText>
+            <BodyText size="base" tone="secondary" className="mb-8 max-w-lg mx-auto">
+              ATHELOS is live and taking trial signups. OTA Sentinel is
+              available through direct engagement with ZERODIN.
+            </BodyText>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <a
+                href="https://www.athelos.pro/docs"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GlassButton variant="primary" size="lg">
+                  ATHELOS docs
+                </GlassButton>
+              </a>
+              <a
+                href="https://app.athelos.pro/cloud/signup"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GlassButton variant="secondary" size="lg">
+                  Start free trial
+                </GlassButton>
+              </a>
+            </div>
+          </Glass>
+        </Reveal>
+      </Section>
     </div>
   );
 }
