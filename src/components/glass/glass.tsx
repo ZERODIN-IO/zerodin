@@ -37,7 +37,8 @@ type GlassMaterial =
   | "water"
   | "block"
   | "liquid"
-  | "aurora";
+  | "aurora"
+  | "heavy";
 
 // Deeper shadow stacks than T4. The cast and ambient layers are
 // pushed further out so every panel reads as clearly floating above
@@ -125,6 +126,16 @@ const materialClasses: Record<GlassMaterial, string> = {
     "backdrop-blur-xl bg-white/[0.04] border border-[rgba(0,227,253,0.15)]",
     "glass-aurora",
     "shadow-[0_4px_12px_rgba(0,227,253,0.08),0_16px_32px_rgba(0,227,253,0.05),0_32px_64px_rgba(0,0,0,0.08)]",
+    "overflow-hidden"
+  ),
+  // Heavy Glass — a thick frosted museum case. Darker than the page,
+  // with a broad soft top highlight and a strong inner shadow. Static
+  // (no hover lift) — the CTAs inside still lift via their own button
+  // variant. The .glass-heavy class triggers the CSS pseudo-elements.
+  heavy: cn(
+    "backdrop-blur-2xl bg-black/[0.15] border-2 border-black/[0.20]",
+    "glass-heavy",
+    "shadow-[0_6px_16px_rgba(0,0,0,0.30),0_24px_48px_rgba(0,0,0,0.18),0_56px_96px_rgba(0,0,0,0.10)]",
     "overflow-hidden"
   ),
 };

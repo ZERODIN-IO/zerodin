@@ -63,7 +63,7 @@ export default function AthelosPage() {
       <Section spacing="lg">
         <Reveal>
           <Glass
-            material="crystal"
+            material="heavy"
             className="max-w-3xl mx-auto p-10 md:p-16 text-center"
           >
             <BodyText
@@ -120,7 +120,7 @@ export default function AthelosPage() {
           {pillars.map((pillar, index) => (
             <Reveal key={pillar.name} delay={0.1 * index}>
               <Glass
-                material="clear"
+                material="heavy"
                 className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 p-6 md:px-8"
               >
                 <div className="md:w-64 md:shrink-0">
@@ -175,7 +175,7 @@ export default function AthelosPage() {
       <Section spacing="md">
         <Reveal>
           <Glass
-            material="crystal"
+            material="heavy"
             className="max-w-3xl mx-auto p-10 md:p-14 text-center"
           >
             <BodyText

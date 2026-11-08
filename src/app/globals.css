@@ -483,3 +483,66 @@ body {
     rgba(0, 144, 168, 0)
   );
 }
+
+
+/* === HEAVY GLASS VARIANT === */
+
+/* A thick frosted museum case. The panel is darker than the page,
+   with a broad soft top highlight, a strong inner shadow below it,
+   and a substantial bottom edge. It does not try to be noticed —
+   it feels like it has been there for a long time. */
+
+.glass-heavy {
+  position: relative;
+}
+
+/* Broad soft top highlight — 6px band at 15% white, fading down.
+   Softer than the block variant's bright edge but broader. */
+.glass-heavy::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 4%;
+  right: 4%;
+  height: 6px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0)
+  );
+  border-radius: 16px 16px 0 0;
+  pointer-events: none;
+}
+
+/* Strong inner shadow below the top highlight — 4px darker band.
+   Shows that light cannot penetrate the thickness of the case. */
+.glass-heavy::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 4%;
+  right: 4%;
+  height: 4px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18),
+    rgba(0, 0, 0, 0)
+  );
+  pointer-events: none;
+}
+
+.light .glass-heavy::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.light .glass-heavy::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.10),
+    rgba(0, 0, 0, 0)
+  );
+}

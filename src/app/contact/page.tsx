@@ -35,7 +35,7 @@ function ContactForm() {
 
   if (submitted) {
     return (
-      <Glass material="crystal" className="p-12 text-center">
+      <Glass material="heavy" className="p-12 text-center">
         <DisplayText size="md" as="h3" className="mb-3">
           Message received.
         </DisplayText>
@@ -47,7 +47,7 @@ function ContactForm() {
   }
 
   return (
-    <Glass material="crystal" className="p-8">
+    <Glass material="heavy" className="p-8">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
@@ -132,7 +132,7 @@ export default function ContactPage() {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="space-y-4 md:col-span-1">
             <Reveal>
-              <Glass material="clear" className="p-6">
+              <Glass material="heavy" className="p-6">
                 <BodyText size="sm" tone="tertiary" className="uppercase tracking-wider mb-2">
                   Security
                 </BodyText>
@@ -142,7 +142,7 @@ export default function ContactPage() {
               </Glass>
             </Reveal>
             <Reveal delay={0.1}>
-              <Glass material="clear" className="p-6">
+              <Glass material="heavy" className="p-6">
                 <BodyText size="sm" tone="tertiary" className="uppercase tracking-wider mb-2">
                   Sales
                 </BodyText>
@@ -152,7 +152,7 @@ export default function ContactPage() {
               </Glass>
             </Reveal>
             <Reveal delay={0.2}>
-              <Glass material="clear" className="p-6">
+              <Glass material="heavy" className="p-6">
                 <BodyText size="sm" tone="tertiary" className="uppercase tracking-wider mb-2">
                   Location
                 </BodyText>
@@ -167,7 +167,7 @@ export default function ContactPage() {
             <Reveal delay={0.15}>
               <Suspense
                 fallback={
-                  <Glass material="crystal" className="p-8">
+                  <Glass material="heavy" className="p-8">
                     <div className="h-96 animate-pulse rounded-xl bg-white/[0.04]" />
                   </Glass>
                 }

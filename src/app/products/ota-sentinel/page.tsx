@@ -105,7 +105,7 @@ export default function OtaSentinelPage() {
             </div>
 
             <Glass
-              material="crystal"
+              material="heavy"
               className="p-10 md:p-16 text-center"
             >
               <BodyText
@@ -155,7 +155,7 @@ export default function OtaSentinelPage() {
           {paths.map((path, index) => (
             <Reveal key={path.number} delay={0.1 * index}>
               <Glass
-                material="clear"
+                material="heavy"
                 className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8 p-6 md:px-8"
               >
                 <div className="md:w-64 md:shrink-0">
@@ -206,7 +206,7 @@ export default function OtaSentinelPage() {
           {tiers.map((tier, index) => (
             <Reveal key={tier.name} delay={0.1 * index}>
               <Glass
-                material="clear"
+                material="heavy"
                 className="p-8 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8"
               >
                 <div className="md:col-span-5">
@@ -248,7 +248,7 @@ export default function OtaSentinelPage() {
       <Section spacing="md">
         <Reveal>
           <Glass
-            material="crystal"
+            material="heavy"
             className="max-w-3xl mx-auto p-10 md:p-14"
           >
             <BodyText
@@ -296,7 +296,7 @@ export default function OtaSentinelPage() {
       <Section spacing="lg">
         <Reveal>
           <Glass
-            material="thick"
+            material="heavy"
             className="max-w-3xl mx-auto p-10 md:p-14 text-center"
           >
             <DisplayText size="md" as="h2" className="mb-4">

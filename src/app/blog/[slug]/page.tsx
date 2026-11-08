@@ -208,7 +208,7 @@ export default async function BlogPostPage({
         </Link>
 
         <Reveal>
-          <Glass material="crystal" className="p-8 md:p-14">
+          <Glass material="heavy" className="p-8 md:p-14">
             <div className="mb-8">
               <BodyText
                 size="sm"

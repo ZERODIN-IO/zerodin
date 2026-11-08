@@ -35,7 +35,7 @@ export default function DocsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <Reveal delay={0.1}>
-            <Glass material="crystal" className="p-8 md:p-10 h-full flex flex-col">
+            <Glass material="heavy" className="p-8 md:p-10 h-full flex flex-col">
               <DisplayText size="md" as="h2" className="text-2xl mb-3">
                 ATHELOS
               </DisplayText>
@@ -57,7 +57,7 @@ export default function DocsPage() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <Glass material="clear" className="p-8 md:p-10 h-full flex flex-col">
+            <Glass material="heavy" className="p-8 md:p-10 h-full flex flex-col">
               <DisplayText size="md" as="h2" className="text-2xl mb-3">
                 OTA Sentinel
               </DisplayText>
@@ -74,7 +74,7 @@ export default function DocsPage() {
         </div>
 
         <Reveal delay={0.3}>
-          <Glass material="thick" className="max-w-3xl mx-auto p-8 md:p-12 mt-12 text-center">
+          <Glass material="heavy" className="max-w-3xl mx-auto p-8 md:p-12 mt-12 text-center">
             <DisplayText size="md" as="h2" className="text-2xl mb-3">
               Questions about deployment?
             </DisplayText>

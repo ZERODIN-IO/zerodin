@@ -47,7 +47,7 @@ export default function AboutPage() {
       <Section spacing="lg">
         <Reveal>
           <Glass
-            material="crystal"
+            material="heavy"
             className="max-w-3xl mx-auto p-10 md:p-16 text-center"
           >
             <BodyText
@@ -74,7 +74,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat, index) => (
             <Reveal key={stat.label} delay={0.1 * index}>
-              <Glass material="clear" className="p-6 text-center h-full">
+              <Glass material="heavy" className="p-6 text-center h-full">
                 <DisplayText
                   size="md"
                   as="div"
@@ -101,7 +101,7 @@ export default function AboutPage() {
 
         <div className="grid md:grid-cols-2 gap-6">
           <Reveal delay={0.1}>
-            <Glass material="clear" className="p-8 h-full">
+            <Glass material="heavy" className="p-8 h-full">
               <BodyText size="base" tone="primary" className="mb-4">
                 ZERODIN was founded in 2026 by a security researcher in
                 Freetown who was tired of juggling twenty tools for a single
@@ -120,7 +120,7 @@ export default function AboutPage() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <Glass material="clear" className="p-8 h-full flex flex-col justify-center">
+            <Glass material="heavy" className="p-8 h-full flex flex-col justify-center">
               <BodyText
                 size="sm"
                 tone="tertiary"
@@ -152,7 +152,7 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-4">
           {principles.map((principle, index) => (
             <Reveal key={principle.name} delay={0.1 * index}>
-              <Glass material="clear" className="p-6 h-full">
+              <Glass material="heavy" className="p-6 h-full">
                 <DisplayText size="md" as="h3" className="text-xl mb-3">
                   {principle.name}
                 </DisplayText>
@@ -169,7 +169,7 @@ export default function AboutPage() {
       <Section spacing="lg">
         <Reveal>
           <Glass
-            material="thick"
+            material="heavy"
             className="max-w-3xl mx-auto p-10 md:p-14 text-center"
           >
             <DisplayText size="md" as="h2" className="mb-4">

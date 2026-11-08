@@ -82,7 +82,7 @@ export default function TrustPage() {
         <div className="grid md:grid-cols-2 gap-4 mb-12">
           {securityFeatures.map((section, index) => (
             <Reveal key={section.title} delay={0.1 * index}>
-              <Glass material="clear" className="p-8 h-full">
+              <Glass material="heavy" className="p-8 h-full">
                 <DisplayText size="md" as="h2" className="text-xl mb-4">
                   {section.title}
                 </DisplayText>
@@ -106,7 +106,7 @@ export default function TrustPage() {
 
         {/* Compliance */}
         <Reveal>
-          <Glass material="crystal" className="p-8 md:p-12 mb-12">
+          <Glass material="heavy" className="p-8 md:p-12 mb-12">
             <DisplayText size="md" as="h2" className="mb-8 text-center">
               Verified.
             </DisplayText>
@@ -134,7 +134,7 @@ export default function TrustPage() {
 
         {/* Contact */}
         <Reveal>
-          <Glass material="thick" className="max-w-3xl mx-auto p-10 text-center">
+          <Glass material="heavy" className="max-w-3xl mx-auto p-10 text-center">
             <DisplayText size="md" as="h2" className="mb-4">
               Security questions?
             </DisplayText>
