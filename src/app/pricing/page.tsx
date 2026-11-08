@@ -111,7 +111,7 @@ export default function PricingPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           {athelosModels.map((model, index) => (
             <Reveal key={model.name} delay={0.1 * index}>
-              <Glass material="clear" className="h-full p-6">
+              <Glass material="heavy" className="h-full p-6">
                 <BodyText size="sm" tone="tertiary" className="uppercase tracking-wider mb-2">
                   {model.name}
                 </BodyText>

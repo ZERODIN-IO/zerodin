@@ -32,7 +32,7 @@ export default function PrivacyPage() {
 
         <div className="max-w-3xl mx-auto space-y-6">
           <Reveal>
-            <Glass material="crystal" className="p-8 md:p-10">
+            <Glass material="heavy" className="p-8 md:p-10">
               <DisplayText size="md" as="h2" className="text-xl mb-4">
                 What this site collects
               </DisplayText>
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <Glass material="clear" className="p-8 md:p-10">
+            <Glass material="heavy" className="p-8 md:p-10">
               <DisplayText size="md" as="h2" className="text-xl mb-4">
                 Contact form
               </DisplayText>
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <Glass material="clear" className="p-8 md:p-10">
+            <Glass material="heavy" className="p-8 md:p-10">
               <DisplayText size="md" as="h2" className="text-xl mb-4">
                 ATHELOS Cloud customer data
               </DisplayText>
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.3}>
-            <Glass material="clear" className="p-8 md:p-10">
+            <Glass material="heavy" className="p-8 md:p-10">
               <DisplayText size="md" as="h2" className="text-xl mb-4">
                 OTA Sentinel
               </DisplayText>
@@ -95,7 +95,7 @@ export default function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.4}>
-            <Glass material="thick" className="p-8 md:p-10">
+            <Glass material="heavy" className="p-8 md:p-10">
               <DisplayText size="md" as="h2" className="text-xl mb-4">
                 Contact
               </DisplayText>
