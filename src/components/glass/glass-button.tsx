@@ -1,17 +1,22 @@
 "use client";
 
-// Glass button with Framer Motion hover lift.
+// Glass button with three layers of depth:
 //
-// Three variants:
-//   primary    — the crystal glass surface with a cyan edge
-//   secondary  — clear glass, no accent
-//   ghost      — border only, transparent fill, no glass
+//   1. Layered shadows (contact + cast + ambient) — the button floats
+//   2. Inner highlights (top specular, bottom shadow) — the button has thickness
+//   3. Edge lighting (gradient border) — the glass catches directional light
 //
-// Three sizes: sm / md / lg.
+// On hover the button lifts 2px and the shadow expands. On press it
+// settles. Framer Motion handles the lift; CSS handles the shadow
+// transition on the same element.
 //
-// Framer Motion's whileHover respects prefers-reduced-motion automatically
-// when the user has enabled it — the animation is skipped, the color and
-// border transitions remain.
+// The material behind the button face changes per variant:
+//   primary   — cyan-tinted glass, cyan edge, cyan inner glow
+//   secondary — neutral glass, subtle border
+//   ghost     — border only, transparent fill, no inner glow
+//
+// All variants use the same shadow stack and the same hover lift.
+// The variant only changes the tint.
 
 import { forwardRef, type ReactNode } from "react";
 import Link from "next/link";
@@ -21,27 +26,69 @@ import { cn } from "@/lib/utils";
 type ButtonVariant = "primary" | "secondary" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
+// The shadow stack for every button. Three layers:
+//   contact  — 2px offset, tight blur, strong alpha (where it touches)
+//   cast     — 12px offset, medium blur, moderate alpha (where it floats)
+//   ambient  — 0px offset, wide blur, faint alpha (atmosphere around it)
+const shadowBase =
+  "shadow-[0_2px_4px_rgba(0,0,0,0.3),0_12px_24px_rgba(0,0,0,0.15),0_32px_64px_rgba(0,0,0,0.08)]";
+
+const shadowHover =
+  "hover:shadow-[0_4px_8px_rgba(0,0,0,0.35),0_20px_40px_rgba(0,0,0,0.2),0_48px_80px_rgba(0,0,0,0.1)]";
+
+const shadowActive =
+  "active:shadow-[0_1px_2px_rgba(0,0,0,0.4),0_6px_12px_rgba(0,0,0,0.2)]";
+
+// The inner highlight and shadow that give the button thickness.
+// inset 0 1px 0 = a bright 1px line on the top edge (light catch)
+// inset 0 -1px 0 = a dark 1px line on the bottom edge (thickness shadow)
+const innerDepth =
+  "shadow-[inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.15)]";
+
 const variantClasses: Record<ButtonVariant, string> = {
   primary: cn(
-    "backdrop-blur-xl bg-[rgba(0,227,253,0.08)] border-[rgba(0,227,253,0.25)]",
-    "text-text-primary hover:bg-[rgba(0,227,253,0.12)] hover:border-[rgba(0,227,253,0.4)]",
-    "shadow-[0_0_20px_rgba(0,227,253,0.08)] hover:shadow-[0_0_30px_rgba(0,227,253,0.15)]"
+    "bg-[rgba(0,227,253,0.08)]",
+    "border border-[rgba(0,227,253,0.35)]",
+    "text-text-primary",
+    "hover:bg-[rgba(0,227,253,0.14)]",
+    "hover:border-[rgba(0,227,253,0.5)]"
   ),
   secondary: cn(
-    "backdrop-blur-xl bg-white/[0.06] border-white/[0.10]",
-    "text-text-primary hover:bg-white/[0.10] hover:border-white/[0.15]"
+    "bg-surface/30",
+    "border border-border-subtle",
+    "text-text-primary",
+    "hover:bg-surface/50",
+    "hover:border-border-strong"
   ),
   ghost: cn(
-    "bg-transparent border-white/[0.08]",
-    "text-text-secondary hover:text-text-primary hover:border-white/[0.15]"
+    "bg-transparent",
+    "border border-border-subtle",
+    "text-text-secondary",
+    "hover:text-text-primary",
+    "hover:border-border-strong",
+    "hover:bg-surface/20"
   ),
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "h-8 px-4 text-sm rounded-lg",
-  md: "h-11 px-6 text-base rounded-xl",
+  sm: "h-9 px-4 text-sm rounded-xl",
+  md: "h-11 px-6 text-base rounded-2xl",
   lg: "h-14 px-8 text-lg rounded-2xl",
 };
+
+const baseClasses = cn(
+  "inline-flex items-center justify-center gap-2",
+  "relative font-medium",
+  "backdrop-blur-xl",
+  "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aurora-cyan/50 focus-visible:ring-offset-2 focus-visible:ring-offset-void",
+  "disabled:pointer-events-none disabled:opacity-50",
+  "glass-specular",
+  shadowBase,
+  innerDepth,
+  shadowHover,
+  shadowActive
+);
 
 interface GlassButtonProps {
   variant?: ButtonVariant;
@@ -73,12 +120,7 @@ export const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(
     ref
   ) {
     const classes = cn(
-      "inline-flex items-center justify-center gap-2",
-      "border font-medium",
-      "transition-colors duration-200",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aurora-cyan/50 focus-visible:ring-offset-2 focus-visible:ring-offset-void",
-      "disabled:pointer-events-none disabled:opacity-50",
-      "glass-specular",
+      baseClasses,
       variantClasses[variant],
       sizeClasses[size],
       className
@@ -86,7 +128,11 @@ export const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(
 
     const motionProps = disabled
       ? {}
-      : { whileHover: { y: -2 }, transition: { duration: 0.2 } };
+      : {
+          whileHover: { y: -2, scale: 1.01 },
+          whileTap: { y: 0, scale: 0.99 },
+          transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] as const },
+        };
 
     if (href) {
       const isExternal = href.startsWith("http") || href.startsWith("mailto:");
@@ -104,8 +150,8 @@ export const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(
         );
       }
       return (
-        <Link href={href} className={classes}>
-          <motion.span {...motionProps} className="contents">
+        <Link href={href} className="inline-block">
+          <motion.span className={classes} {...motionProps}>
             {children}
           </motion.span>
         </Link>
