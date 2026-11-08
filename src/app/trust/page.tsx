@@ -1,137 +1,153 @@
-'use client';
+"use client";
 
-import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
-import { 
-  Shield, Lock, Server, Eye, FileCheck, Globe, 
-  CheckCircle2, ExternalLink, AlertTriangle, Clock 
-} from 'lucide-react';
+import {
+  Glass,
+  DisplayText,
+  BodyText,
+  Section,
+  Reveal,
+} from "@/components/glass";
 
 const securityFeatures = [
   {
-    icon: Lock,
-    title: 'Encryption',
+    title: "Encryption",
     items: [
-      'TLS 1.3 for all communications',
-      'AES-256 for data at rest',
-      'End-to-end encryption for sensitive data',
-      'Secure key management',
+      "TLS 1.3 for all communications",
+      "AES-256 for data at rest",
+      "Fernet (AES-128) for SMSC credentials in OTA Sentinel",
+      "Encrypted key management",
     ],
   },
   {
-    icon: Shield,
-    title: 'Infrastructure Security',
+    title: "Isolation",
     items: [
-      'DDoS protection',
-      'Web Application Firewall (WAF)',
-      'Regular penetration testing',
-      '24/7 security monitoring',
+      "Database-per-tenant in ATHELOS Cloud",
+      "OWASP cross-tenant boundary test passed — 0 rows seen across tenants",
+      "Row-Level Security in OTA Sentinel PostgreSQL",
+      "11/11 isolation tests passing",
     ],
   },
   {
-    icon: FileCheck,
-    title: 'Compliance',
+    title: "Audit and Forensics",
     items: [
-      'GDPR compliant',
-      'SOC 2 Type II (in progress)',
-      'PCI DSS compliant (via Stripe)',
-      'Regular third-party audits',
+      "Hash-chained audit logs (SHA-256)",
+      "Immutable forensic records",
+      "Tamper-detectable by cryptographic verification",
+      "GDPR Article 30 compliant retention",
     ],
   },
   {
-    icon: Server,
-    title: 'Data Protection',
+    title: "Data Protection",
     items: [
-      'Data encrypted at rest and in transit',
-      'Automated backups every 24 hours',
-      '30-day backup retention',
-      'Secure data deletion on request',
+      "Data encrypted at rest and in transit",
+      "Automated backups via restic to Backblaze B2",
+      "Daily backup verification",
+      "Data deletion on request",
     ],
   },
 ];
 
-const certifications = [
-  { name: 'GDPR', status: 'Compliant', icon: '✅' },
-  { name: 'SOC 2 Type II', status: 'In Progress', icon: '⏳' },
-  { name: 'PCI DSS', status: 'Via Stripe', icon: '✅' },
-  { name: 'ISO 27001', status: 'Planned 2027', icon: '📋' },
+const compliance = [
+  { name: "GDPR", status: "Compliant", detail: "Article 30, Article 7 consent" },
+  { name: "OWASP", status: "Verified", detail: "Cross-tenant boundary test" },
+  { name: "Self-Hosted", status: "Available", detail: "Data stays on your infrastructure" },
+  { name: "No Cloud AI", status: "Standard", detail: "Ollama runs locally" },
 ];
 
 export default function TrustPage() {
   return (
-    <div className="py-20 px-4">
-      <div className="max-w-5xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <Badge variant="default" className="mb-4">Trust Center</Badge>
-          <h1 className="text-5xl font-bold mb-4 gradient-text">Security & Compliance</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Security is not just a feature — it's our foundation. Here's how we protect your data.
-          </p>
-        </div>
+    <main className="min-h-screen pt-24">
+      <Section spacing="lg">
+        <Reveal>
+          <div className="text-center mb-12">
+            <BodyText
+              size="sm"
+              tone="tertiary"
+              className="uppercase tracking-[0.2em] mb-4"
+            >
+              Trust
+            </BodyText>
+            <DisplayText size="lg" as="h1" className="mb-4">
+              Security posture.
+            </DisplayText>
+            <BodyText size="base" tone="secondary" className="max-w-2xl mx-auto">
+              What is actually true about how both products handle security,
+              isolation, and client data. No aspirational certifications, no
+              claims we cannot prove.
+            </BodyText>
+          </div>
+        </Reveal>
 
-        {/* Security Features Grid */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
-          {securityFeatures.map((section) => (
-            <div key={section.title} className="p-6 rounded-xl border border-border bg-card/50">
-              <section.icon className="h-8 w-8 text-primary mb-4" />
-              <h3 className="text-lg font-semibold mb-4">{section.title}</h3>
-              <ul className="space-y-2.5">
-                {section.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+        {/* Security features */}
+        <div className="grid md:grid-cols-2 gap-4 mb-12">
+          {securityFeatures.map((section, index) => (
+            <Reveal key={section.title} delay={0.1 * index}>
+              <Glass material="clear" className="p-8 h-full">
+                <DisplayText size="md" as="h2" className="text-xl mb-4">
+                  {section.title}
+                </DisplayText>
+                <ul className="space-y-2.5">
+                  {section.items.map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <span
+                        className="mt-2 h-1 w-1 rounded-full bg-text-accent shrink-0"
+                        aria-hidden="true"
+                      />
+                      <BodyText size="sm" tone="secondary">
+                        {item}
+                      </BodyText>
+                    </li>
+                  ))}
+                </ul>
+              </Glass>
+            </Reveal>
           ))}
         </div>
 
-        {/* Certifications */}
-        <div className="p-8 rounded-xl border border-border bg-card/50 mb-16">
-          <h2 className="text-2xl font-bold mb-6">Certifications & Compliance</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {certifications.map((cert) => (
-              <div key={cert.name} className="p-4 rounded-lg border border-border bg-background/50 text-center">
-                <div className="text-2xl mb-2">{cert.icon}</div>
-                <div className="font-semibold text-sm mb-1">{cert.name}</div>
-                <div className="text-xs text-muted-foreground">{cert.status}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Uptime & Monitoring */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
-          <div className="p-6 rounded-xl border border-border bg-card/50">
-            <Clock className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Uptime SLA</h3>
-            <div className="text-4xl font-bold text-primary mb-2">99.9%</div>
-            <p className="text-sm text-muted-foreground">Enterprise plan includes 99.9% uptime SLA with financial penalties.</p>
-          </div>
-          <div className="p-6 rounded-xl border border-border bg-card/50">
-            <AlertTriangle className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Responsible Disclosure</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Found a vulnerability? We want to hear from you. Our bug bounty program rewards 
-              responsible disclosure.
-            </p>
-            <Link href="/trust/disclosure" className="text-sm text-primary hover:underline inline-flex items-center gap-1">
-              View Disclosure Policy <ExternalLink className="h-3 w-3" />
-            </Link>
-          </div>
-        </div>
+        {/* Compliance */}
+        <Reveal>
+          <Glass material="crystal" className="p-8 md:p-12 mb-12">
+            <DisplayText size="md" as="h2" className="mb-8 text-center">
+              Verified.
+            </DisplayText>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {compliance.map((item) => (
+                <div key={item.name} className="text-center">
+                  <BodyText
+                    size="sm"
+                    tone="tertiary"
+                    className="uppercase tracking-wider mb-2"
+                  >
+                    {item.name}
+                  </BodyText>
+                  <DisplayText size="md" as="div" className="text-xl mb-2 text-text-accent">
+                    {item.status}
+                  </DisplayText>
+                  <BodyText size="sm" tone="secondary">
+                    {item.detail}
+                  </BodyText>
+                </div>
+              ))}
+            </div>
+          </Glass>
+        </Reveal>
 
         {/* Contact */}
-        <div className="text-center p-8 rounded-xl border border-border bg-card/50">
-          <Shield className="h-10 w-10 text-primary mx-auto mb-4" />
-          <h3 className="text-xl font-semibold mb-2">Security Questions?</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Contact our security team at security@zerodin.io
-          </p>
-        </div>
-      </div>
-    </div>
+        <Reveal>
+          <Glass material="thick" className="max-w-3xl mx-auto p-10 text-center">
+            <DisplayText size="md" as="h2" className="mb-4">
+              Security questions?
+            </DisplayText>
+            <BodyText size="base" tone="secondary" className="mb-4">
+              Contact the operator directly. Every security question is read
+              and answered by the person who built the software.
+            </BodyText>
+            <BodyText size="base" tone="primary" className="font-mono">
+              security@zerodin.pro
+            </BodyText>
+          </Glass>
+        </Reveal>
+      </Section>
+    </main>
   );
 }
