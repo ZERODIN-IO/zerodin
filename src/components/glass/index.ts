@@ -15,3 +15,9 @@ export type { BodyTextProps, BodySize, BodyTone } from "./body-text";
 
 export { Section } from "./section";
 export type { SectionProps, SectionSpacing } from "./section";
+
+export { AuroraBackground } from "./aurora-background";
+export type { AuroraBackgroundProps } from "./aurora-background";
+
+export { Reveal } from "./reveal";
+export type { RevealProps, RevealDirection } from "./reveal";
