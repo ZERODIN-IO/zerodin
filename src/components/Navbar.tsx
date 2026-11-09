@@ -100,7 +100,7 @@ export function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="px-3 py-2 rounded-full text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  className="px-3 py-2 rounded-full text-sm text-text-secondary hover:text-text-primary transition-colors duration-200 underline-offset-4 hover:underline"
                 >
                   {item.name}
                 </Link>
