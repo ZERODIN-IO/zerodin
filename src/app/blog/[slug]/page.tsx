@@ -131,6 +131,17 @@ If you want a company that promises a roadmap of seven products it has not built
       "The multi-tenancy problem, the architecture that solves it, and the OWASP test that proves it: Tenant B saw 0 rows. Tenant A saw 59 rows.",
     content: `Multi-tenant SaaS has a problem that is easy to describe and hard to solve: two customers, one database, and a bug that could show one customer the other's data. Most SaaS accepts a small risk of this. ATHELOS does not.
 
+## The Threat Model
+
+The threat is cross-tenant data access: a customer reading another customer's data. The vectors are:
+
+- A forgotten WHERE clause on a shared table
+- A raw SQL query that bypasses the ORM
+- A new server action that does not establish the tenant context
+- A connection registration bug that routes a query to the wrong database
+
+The impact is a data breach: customer A sees customer B's clients, engagements, findings, or evidence. The control is database-per-tenant with physical isolation, verified on every release. The compliance mapping is NIST SP 800-53 AC-3 and AC-4, ISO 27001 A.9.4.1 and A.13.2.1, and OWASP ASVS v4.0.3 V4.1.1 and V8.3.
+
 ## The Problem With Row-Level Tenancy
 
 The common way to do multi-tenancy is a single database with a tenant_id column on every table. Every query filters by tenant_id. If any query forgets the filter — a new server action, a forgotten WHERE clause, a raw SQL that bypasses the ORM — one customer can see another customer's data. The bug class is large. The industry has examples of it happening at major companies.
@@ -141,9 +152,9 @@ ATHELOS uses this second approach.
 
 ## The Architecture
 
-Every tenant gets a PostgreSQL database of their own, named athelos_tenant_<slug>. The tenant's application data — clients, engagements, findings, evidence, reports, knowledge base articles — lives entirely inside that database. There is no tenant_id column on any of the 46 application tables. There is no query that could be run without a tenant in scope.
+Every tenant gets a PostgreSQL database of their own. The tenant's application data — clients, engagements, findings, evidence, reports, knowledge base articles — lives entirely inside that database. There is no tenant_id column on any of the 46 application tables. There is no query that could be run without a tenant in scope.
 
-There is a second database, called the control plane, which holds the cross-tenant data: the tenants table, the users table, the subscriptions table, and the audit and billing data that needs to be seen across tenants. The control plane is at soc_solo. It knows which tenants exist and which database belongs to each.
+There is a second database, called the control plane, which holds the cross-tenant data: the tenants table, the users table, the subscriptions table, and the audit and billing data that needs to be seen across tenants. The control plane database knows which tenants exist and which database belongs to each.
 
 When a request comes in, it carries a subdomain or a header that identifies the tenant. A proxy in front of the application resolves that identifier to a tenant ID, and forwards the request with a trusted x-tenant-id header. The application's database layer, a Proxy object that wraps every query, reads that header from an AsyncLocalStorage context and routes the query to the correct tenant database. Every server action is wrapped by a boundary function that establishes the tenant context before the action runs.
 
@@ -151,7 +162,9 @@ When a request comes in, it carries a subdomain or a header that identifies the 
 
 The architecture is simple in principle. Two things make it hard in practice.
 
-The first is connection registration across processes. A tenant's connection pool has to be registered with the right process before a query can run. In a Next.js application, the proxy runs in one process, the API routes run in another, and background workers run in a third. If the connection is registered in the proxy but the query runs in the API route, the query has no connection and fails. This cost us three separate bug fixes — each one adding a bootstrap import to a new process that was not registering the connection. The rule we landed on is: any file that queries the control plane must import the control-plane bootstrap module at the top. Any file that queries a tenant database must run inside the tenant boundary. Every new entry point has to make this explicit.
+The first is connection registration across processes. A tenant's connection pool has to be registered with the right process before a query can run. In a Next.js application, the proxy runs in one process, the API routes run in another, and background workers run in a third. If the connection is registered in the proxy but the query runs in the API route, the query has no connection and fails.
+
+Three separate connection-registration bugs were caught during development, each fixed with a bootstrap import at the top of the file. The current code is verified: every entry point that queries the control plane imports its bootstrap module explicitly, and every server action runs inside the tenant boundary. The residual risk is a new entry point added without the bootstrap; this is mitigated by the code review checklist and the test suite, which fail the build if a query runs outside the tenant context.
 
 The second is the tenant boundary itself. Every server action — all 302 of them — has to run inside the tenant context. We use an AST codemod (built with ts-morph) to wrap them mechanically, so that a new server action cannot be written without the boundary. The wrapping is applied at the top of each function. Inside the function, the code sees the tenant's database as if it were the only database. Outside the function, nothing runs.
 
@@ -171,7 +184,17 @@ The test lives at test/cloud/owasp-cross-tenant.ts and is run on every release. 
 
 If you are a security operator who is thinking about moving to a Cloud deployment of ATHELOS, the question you are going to ask is: "Is my data safe from the other tenants?"
 
-The answer is not "trust us, our filter is good." The answer is: your data is in a database that no other tenant's query can reach. The proof is a test that reads zero rows from the other tenant. That is what database-per-tenant buys, and that is why ATHELOS uses it.`,
+The answer is not "trust us, our filter is good." The answer is: your data is in a database that no other tenant's query can reach. The proof is a test that reads zero rows from the other tenant. That is what database-per-tenant buys, and that is why ATHELOS uses it.
+
+## Compliance Mapping
+
+- **NIST SP 800-53 AC-3** — access enforcement: the tenant boundary wrapper on every server action
+- **NIST SP 800-53 AC-4** — information flow enforcement: database-per-tenant with physical isolation
+- **ISO 27001 A.9.4.1** — information access restriction: the database layer routes every query to the tenant's database
+- **ISO 27001 A.13.2.1** — information transfer policies: the tenant identifier is set by the trusted proxy, never by the client
+- **OWASP ASVS v4.0.3 V4.1.1** — access control: the boundary function
+- **OWASP ASVS v4.0.3 V8.3** — session management: the tenant context
+- **SOC 2 CC6.1** — logical and physical access controls: verified by the OWASP test on every release`,
   },
 ];
 
