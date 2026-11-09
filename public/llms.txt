@@ -1,0 +1,28 @@
+# ZERODIN
+
+> ZERODIN is a cybersecurity company building tools for security operators, network engineers, and organizations protecting critical infrastructure.
+
+ZERODIN ships two products today:
+
+- **ATHELOS** — a cybersecurity command center for the solo operator. Five pillars: knowledge, engagements, delivery, business, tooling. Three deployment models: self-hosted, dedicated, cloud. Database-per-tenant Cloud with proven isolation.
+- **OTA Sentinel** — a SIM security platform for telecom operators and regulators. Audits SIM cards for Simjacker vulnerabilities. Secure OTA management with KIC/KID keys. Three commercial tiers: Audit Report, Network License, Sovereign/MSSP.
+
+More products are in development.
+
+## Pages
+
+- https://zerodin.pro/ — Home, mission, two products, roadmap
+- https://zerodin.pro/about — Company, founder story, mission, roadmap
+- https://zerodin.pro/products — Product catalog
+- https://zerodin.pro/products/athelos — ATHELOS product page
+- https://zerodin.pro/products/ota-sentinel — OTA Sentinel product page
+- https://zerodin.pro/compare — Side-by-side comparison
+- https://zerodin.pro/pricing — Pricing
+- https://zerodin.pro/blog — Notes from the operator
+- https://zerodin.pro/docs — Documentation
+- https://zerodin.pro/trust — Trust Center
+- https://zerodin.pro/contact — Contact
+
+## Contact
+
+security@zerodin.pro
