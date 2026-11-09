@@ -5,7 +5,6 @@ import {
   DisplayText,
   BodyText,
   Section,
-  Reveal,
 } from "@/components/glass";
 
 const securityFeatures = [
@@ -60,8 +59,7 @@ export default function TrustPage() {
   return (
     <main className="min-h-screen pt-24">
       <Section spacing="lg">
-        <Reveal>
-          <div className="text-center mb-12">
+        <div className="text-center mb-12">
             <BodyText
               size="sm"
               tone="tertiary"
@@ -78,13 +76,11 @@ export default function TrustPage() {
               we cannot prove.
             </BodyText>
           </div>
-        </Reveal>
 
         {/* Security features */}
         <div className="grid md:grid-cols-2 gap-4 mb-12">
           {securityFeatures.map((section, index) => (
-            <Reveal key={section.title} delay={0.1 * index}>
-              <Glass material="heavy" className="p-8 h-full">
+            <Glass material="heavy" className="p-8 h-full">
                 <DisplayText size="md" as="h2" className="text-xl mb-4">
                   {section.title}
                 </DisplayText>
@@ -102,13 +98,11 @@ export default function TrustPage() {
                   ))}
                 </ul>
               </Glass>
-            </Reveal>
           ))}
         </div>
 
         {/* Compliance */}
-        <Reveal>
-          <Glass material="heavy" className="p-8 md:p-12 mb-12">
+        <Glass material="heavy" className="p-8 md:p-12 mb-12">
             <DisplayText size="md" as="h2" className="mb-8 text-center">
               Verified.
             </DisplayText>
@@ -132,11 +126,9 @@ export default function TrustPage() {
               ))}
             </div>
           </Glass>
-        </Reveal>
 
         {/* Contact */}
-        <Reveal>
-          <Glass material="heavy" className="max-w-3xl mx-auto p-10 text-center">
+        <Glass material="heavy" className="max-w-3xl mx-auto p-10 text-center">
             <DisplayText size="md" as="h2" className="mb-4">
               Security questions?
             </DisplayText>
@@ -148,7 +140,6 @@ export default function TrustPage() {
               security@zerodin.pro
             </BodyText>
           </Glass>
-        </Reveal>
       </Section>
     </main>
   );

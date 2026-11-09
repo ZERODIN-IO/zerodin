@@ -6,7 +6,6 @@ import {
   DisplayText,
   BodyText,
   Section,
-  Reveal,
 } from "@/components/glass";
 
 interface BlogPost {
@@ -207,8 +206,7 @@ export default async function BlogPostPage({
           All posts
         </Link>
 
-        <Reveal>
-          <Glass material="heavy" className="p-8 md:p-14">
+        <Glass material="heavy" className="p-8 md:p-14">
             <div className="mb-8">
               <BodyText
                 size="sm"
@@ -272,7 +270,6 @@ export default async function BlogPostPage({
               </Link>
             </div>
           </Glass>
-        </Reveal>
       </Section>
     </main>
   );

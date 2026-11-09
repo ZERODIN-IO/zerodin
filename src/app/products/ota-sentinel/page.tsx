@@ -7,7 +7,6 @@ import {
   DisplayText,
   BodyText,
   Section,
-  Reveal,
 } from "@/components/glass";
 
 const paths = [
@@ -81,8 +80,7 @@ export default function OtaSentinelPage() {
     <main className="min-h-screen pt-24">
       {/* Hero with SIM-card glass motif */}
       <Section spacing="lg">
-        <Reveal>
-          <div className="relative max-w-3xl mx-auto">
+        <div className="relative max-w-3xl mx-auto">
             {/* SIM card silhouette behind the hero panel */}
             <div
               className="absolute inset-0 -z-10 flex items-center justify-center pointer-events-none"
@@ -138,25 +136,21 @@ export default function OtaSentinelPage() {
               </div>
             </Glass>
           </div>
-        </Reveal>
       </Section>
 
       {/* The two paths */}
       <Section spacing="md">
-        <Reveal>
-          <DisplayText size="md" as="h2" className="mb-4">
+        <DisplayText size="md" as="h2" className="mb-4">
             Two paths, one platform.
           </DisplayText>
           <BodyText size="base" tone="secondary" className="max-w-2xl mb-12">
             OTA Sentinel solves two distinct problems. Which one you need
             depends on whether you own the KIC/KID keys.
           </BodyText>
-        </Reveal>
 
         <div className="space-y-4">
           {paths.map((path, index) => (
-            <Reveal key={path.number} delay={0.1 * index}>
-              <Glass
+            <Glass
                 material="heavy"
                 className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8 p-6 md:px-8"
               >
@@ -187,27 +181,23 @@ export default function OtaSentinelPage() {
                   </ul>
                 </div>
               </Glass>
-            </Reveal>
           ))}
         </div>
       </Section>
 
       {/* Three commercial tiers */}
       <Section spacing="md">
-        <Reveal>
-          <DisplayText size="md" as="h2" className="mb-4">
+        <DisplayText size="md" as="h2" className="mb-4">
             Commercial models.
           </DisplayText>
           <BodyText size="base" tone="secondary" className="max-w-2xl mb-12">
             Three engagement types, from a one-time audit to a perpetual
             self-hosted license and a sovereign deployment.
           </BodyText>
-        </Reveal>
 
         <div className="space-y-4">
           {tiers.map((tier, index) => (
-            <Reveal key={tier.name} delay={0.1 * index}>
-              <Glass
+            <Glass
                 material="heavy"
                 className="p-8 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8"
               >
@@ -241,15 +231,13 @@ export default function OtaSentinelPage() {
                   </ul>
                 </div>
               </Glass>
-            </Reveal>
           ))}
         </div>
       </Section>
 
       {/* Security posture panel */}
       <Section spacing="md">
-        <Reveal>
-          <Glass
+        <Glass
             material="heavy"
             className="max-w-3xl mx-auto p-10 md:p-14"
           >
@@ -303,13 +291,11 @@ export default function OtaSentinelPage() {
               </div>
             </div>
           </Glass>
-        </Reveal>
       </Section>
 
       {/* Final CTA */}
       <Section spacing="lg">
-        <Reveal>
-          <Glass
+        <Glass
             material="heavy"
             className="max-w-3xl mx-auto p-10 md:p-14 text-center"
           >
@@ -334,7 +320,6 @@ export default function OtaSentinelPage() {
               </Link>
             </div>
           </Glass>
-        </Reveal>
       </Section>
     </main>
   );

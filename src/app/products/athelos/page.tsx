@@ -7,7 +7,6 @@ import {
   DisplayText,
   BodyText,
   Section,
-  Reveal,
 } from "@/components/glass";
 
 const pillars = [
@@ -63,8 +62,7 @@ export default function AthelosPage() {
     <main className="min-h-screen pt-24">
       {/* Hero */}
       <Section spacing="lg">
-        <Reveal>
-          <Glass
+        <Glass
             material="heavy"
             className="max-w-3xl mx-auto p-10 md:p-16 text-center"
           >
@@ -103,25 +101,21 @@ export default function AthelosPage() {
               </a>
             </div>
           </Glass>
-        </Reveal>
       </Section>
 
       {/* Five pillars */}
       <Section spacing="md">
-        <Reveal>
-          <DisplayText size="md" as="h2" className="mb-4">
+        <DisplayText size="md" as="h2" className="mb-4">
             Five pillars.
           </DisplayText>
           <BodyText size="base" tone="secondary" className="max-w-2xl mb-12">
             Every part of the operator's work lives in one tool. No context
             switching, no scattered notes, no external SaaS.
           </BodyText>
-        </Reveal>
 
         <div className="space-y-3">
           {pillars.map((pillar, index) => (
-            <Reveal key={pillar.name} delay={0.1 * index}>
-              <Glass
+            <Glass
                 material="heavy"
                 className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 p-6 md:px-8"
               >
@@ -137,27 +131,23 @@ export default function AthelosPage() {
                   {pillar.description}
                 </BodyText>
               </Glass>
-            </Reveal>
           ))}
         </div>
       </Section>
 
       {/* Three deployment models */}
       <Section spacing="md">
-        <Reveal>
-          <DisplayText size="md" as="h2" className="mb-4">
+        <DisplayText size="md" as="h2" className="mb-4">
             Three deployment models.
           </DisplayText>
           <BodyText size="base" tone="secondary" className="max-w-2xl mb-12">
             One codebase, three configurations. The same tool runs on your
             laptop, your VPS, or as a Cloud tenant — with the same behaviour.
           </BodyText>
-        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {deployments.map((deployment, index) => (
-            <Reveal key={deployment.name} delay={0.1 * index}>
-              <Glass
+            <Glass
                 material="aurora"
                 className="aspect-square p-8 flex flex-col items-center justify-center text-center"
               >
@@ -168,15 +158,13 @@ export default function AthelosPage() {
                   {deployment.description}
                 </BodyText>
               </Glass>
-            </Reveal>
           ))}
         </div>
       </Section>
 
       {/* Isolation proof panel */}
       <Section spacing="md">
-        <Reveal>
-          <Glass
+        <Glass
             material="heavy"
             className="max-w-3xl mx-auto p-10 md:p-14 text-center"
           >
@@ -203,13 +191,11 @@ export default function AthelosPage() {
               ATHELOS security whitepaper.
             </BodyText>
           </Glass>
-        </Reveal>
       </Section>
 
       {/* Final CTA */}
       <Section spacing="lg">
-        <Reveal>
-          <Glass
+        <Glass
             material="thick"
             className="max-w-3xl mx-auto p-10 md:p-14 text-center"
           >
@@ -237,7 +223,6 @@ export default function AthelosPage() {
               </Link>
             </div>
           </Glass>
-        </Reveal>
       </Section>
     </main>
   );

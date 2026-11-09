@@ -7,7 +7,6 @@ import {
   DisplayText,
   BodyText,
   Section,
-  Reveal,
 } from "@/components/glass";
 
 const products = [
@@ -55,8 +54,7 @@ export default function ComparePage() {
   return (
     <main className="min-h-screen pt-24">
       <Section spacing="lg">
-        <Reveal>
-          <div className="text-center mb-12">
+        <div className="text-center mb-12">
             <BodyText
               size="sm"
               tone="tertiary"
@@ -72,12 +70,10 @@ export default function ComparePage() {
               problems. Here is the honest comparison.
             </BodyText>
           </div>
-        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {products.map((product, index) => (
-            <Reveal key={product.slug} delay={0.1 * index}>
-              <Glass material={product.material} className="p-8 md:p-10 h-full flex flex-col">
+            <Glass material={product.material} className="p-8 md:p-10 h-full flex flex-col">
                 <DisplayText size="md" as="h2" className="text-2xl mb-6">
                   {product.name}
                 </DisplayText>
@@ -133,14 +129,12 @@ export default function ComparePage() {
                   )}
                 </div>
               </Glass>
-            </Reveal>
           ))}
         </div>
       </Section>
 
       <Section spacing="md">
-        <Reveal>
-          <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto">
             <DisplayText size="md" as="h2" className="mb-8">
               Three questions.
             </DisplayText>
@@ -160,12 +154,10 @@ export default function ComparePage() {
               ))}
             </div>
           </div>
-        </Reveal>
       </Section>
 
       <Section spacing="lg">
-        <Reveal>
-          <Glass material="heavy" className="max-w-3xl mx-auto p-10 text-center">
+        <Glass material="heavy" className="max-w-3xl mx-auto p-10 text-center">
             <DisplayText size="md" as="h2" className="mb-4">
               Still not sure?
             </DisplayText>
@@ -179,7 +171,6 @@ export default function ComparePage() {
               </GlassButton>
             </Link>
           </Glass>
-        </Reveal>
       </Section>
     </main>
   );

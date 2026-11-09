@@ -7,7 +7,6 @@ import {
   DisplayText,
   BodyText,
   Section,
-  Reveal,
 } from "@/components/glass";
 
 const athelosModels = [
@@ -77,8 +76,7 @@ export default function PricingPage() {
     <main className="min-h-screen pt-24">
       {/* Intro */}
       <Section spacing="lg">
-        <Reveal>
-          <DisplayText size="lg" as="h1" className="mb-4">
+        <DisplayText size="lg" as="h1" className="mb-4">
             Pricing.
           </DisplayText>
           <BodyText size="lg" tone="secondary" className="max-w-2xl">
@@ -86,13 +84,11 @@ export default function PricingPage() {
             tiers that map to how you run it. OTA Sentinel is priced by
             engagement.
           </BodyText>
-        </Reveal>
       </Section>
 
       {/* ATHELOS */}
       <Section spacing="md">
-        <Reveal>
-          <div className="mb-10">
+        <div className="mb-10">
             <BodyText
               size="sm"
               tone="tertiary"
@@ -108,12 +104,10 @@ export default function PricingPage() {
               The actual tier details live on the ATHELOS pricing page.
             </BodyText>
           </div>
-        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           {athelosModels.map((model, index) => (
-            <Reveal key={model.name} delay={0.1 * index}>
-              <Glass material="heavy" className="h-full p-6">
+            <Glass material="heavy" className="h-full p-6">
                 <BodyText size="sm" tone="tertiary" className="uppercase tracking-wider mb-2">
                   {model.name}
                 </BodyText>
@@ -128,12 +122,10 @@ export default function PricingPage() {
                   {model.description}
                 </BodyText>
               </Glass>
-            </Reveal>
           ))}
         </div>
 
-        <Reveal>
-          <div className="flex justify-center">
+        <div className="flex justify-center">
             <a
               href="https://www.athelos.pro/pricing"
               target="_blank"
@@ -144,13 +136,11 @@ export default function PricingPage() {
               </GlassButton>
             </a>
           </div>
-        </Reveal>
       </Section>
 
       {/* OTA Sentinel */}
       <Section spacing="md">
-        <Reveal>
-          <div className="mb-10">
+        <div className="mb-10">
             <BodyText
               size="sm"
               tone="tertiary"
@@ -167,12 +157,10 @@ export default function PricingPage() {
               an audit.
             </BodyText>
           </div>
-        </Reveal>
 
         <div className="space-y-4">
           {otaSentinelTiers.map((tier, index) => (
-            <Reveal key={tier.name} delay={0.1 * index}>
-              <Glass
+            <Glass
                 material="aurora"
                 className="p-8 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8"
               >
@@ -215,27 +203,23 @@ export default function PricingPage() {
                   </Link>
                 </div>
               </Glass>
-            </Reveal>
           ))}
         </div>
       </Section>
 
       {/* Note about future products */}
       <Section spacing="sm">
-        <Reveal>
-          <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center">
             <BodyText size="base" tone="secondary">
               More products will be added as they ship. Contact us to be
               notified.
             </BodyText>
           </div>
-        </Reveal>
       </Section>
 
       {/* Final CTA */}
       <Section spacing="lg">
-        <Reveal>
-          <Glass
+        <Glass
             material="thick"
             className="max-w-3xl mx-auto p-10 md:p-14 text-center"
           >
@@ -253,7 +237,6 @@ export default function PricingPage() {
               </GlassButton>
             </Link>
           </Glass>
-        </Reveal>
       </Section>
     </main>
   );

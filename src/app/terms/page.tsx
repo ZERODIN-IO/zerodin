@@ -5,7 +5,6 @@ import {
   DisplayText,
   BodyText,
   Section,
-  Reveal,
 } from "@/components/glass";
 
 
@@ -14,8 +13,7 @@ export default function TermsPage() {
   return (
     <main className="min-h-screen pt-24">
       <Section spacing="lg">
-        <Reveal>
-          <div className="text-center mb-12">
+        <div className="text-center mb-12">
             <BodyText
               size="sm"
               tone="tertiary"
@@ -30,11 +28,9 @@ export default function TermsPage() {
               Last updated: October 2026
             </BodyText>
           </div>
-        </Reveal>
 
         <div className="max-w-3xl mx-auto space-y-6">
-          <Reveal>
-            <Glass material="heavy" className="p-8 md:p-10">
+          <Glass material="heavy" className="p-8 md:p-10">
               <DisplayText size="md" as="h2" className="text-xl mb-4">
                 What this site provides
               </DisplayText>
@@ -46,10 +42,8 @@ export default function TermsPage() {
                 of engagement.
               </BodyText>
             </Glass>
-          </Reveal>
 
-          <Reveal delay={0.1}>
-            <Glass material="heavy" className="p-8 md:p-10">
+          <Glass material="heavy" className="p-8 md:p-10">
               <DisplayText size="md" as="h2" className="text-xl mb-4">
                 ATHELOS
               </DisplayText>
@@ -62,10 +56,8 @@ export default function TermsPage() {
                 www.athelos.pro.
               </BodyText>
             </Glass>
-          </Reveal>
 
-          <Reveal delay={0.2}>
-            <Glass material="heavy" className="p-8 md:p-10">
+          <Glass material="heavy" className="p-8 md:p-10">
               <DisplayText size="md" as="h2" className="text-xl mb-4">
                 OTA Sentinel
               </DisplayText>
@@ -79,10 +71,8 @@ export default function TermsPage() {
                 the engagement scope.
               </BodyText>
             </Glass>
-          </Reveal>
 
-          <Reveal delay={0.3}>
-            <Glass material="heavy" className="p-8 md:p-10">
+          <Glass material="heavy" className="p-8 md:p-10">
               <DisplayText size="md" as="h2" className="text-xl mb-4">
                 Liability
               </DisplayText>
@@ -93,10 +83,8 @@ export default function TermsPage() {
                 license or engagement agreement.
               </BodyText>
             </Glass>
-          </Reveal>
 
-          <Reveal delay={0.4}>
-            <Glass material="heavy" className="p-8 md:p-10">
+          <Glass material="heavy" className="p-8 md:p-10">
               <DisplayText size="md" as="h2" className="text-xl mb-4">
                 Contact
               </DisplayText>
@@ -107,7 +95,6 @@ export default function TermsPage() {
                 security@zerodin.pro
               </BodyText>
             </Glass>
-          </Reveal>
         </div>
       </Section>
     </main>

@@ -8,7 +8,6 @@ import {
   DisplayText,
   BodyText,
   Section,
-  Reveal,
 } from "@/components/glass";
 
 const products = [
@@ -52,8 +51,7 @@ export default function ProductsPage() {
   return (
     <main className="min-h-screen pt-24">
       <Section spacing="lg">
-        <Reveal>
-          <DisplayText size="lg" as="h1" className="mb-4">
+        <DisplayText size="lg" as="h1" className="mb-4">
             Two products. Both shipped.
           </DisplayText>
           <BodyText size="lg" tone="secondary" className="max-w-2xl mb-16">
@@ -61,16 +59,10 @@ export default function ProductsPage() {
             SIM security. No aspirational roadmap, no vaporware — two
             products that run in production today.
           </BodyText>
-        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {products.map((product, index) => (
-            <Reveal
-              key={product.slug}
-              delay={0.15 * index}
-              className={index === 1 ? "md:mt-12" : ""}
-            >
-              <Glass
+            <Glass
                 material="block"
                 hoverable
                 className="h-full p-8 md:p-10 flex flex-col"
@@ -124,14 +116,12 @@ export default function ProductsPage() {
                   </Link>
                 </div>
               </Glass>
-            </Reveal>
           ))}
         </div>
       </Section>
 
       <Section spacing="md">
-        <Reveal>
-          <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto">
             <BodyText
               size="sm"
               tone="tertiary"
@@ -180,12 +170,10 @@ export default function ProductsPage() {
               notified.
             </BodyText>
           </div>
-        </Reveal>
       </Section>
 
       <Section spacing="md">
-        <Reveal>
-          <Glass material="thick" className="p-8 md:p-12 text-center">
+        <Glass material="thick" className="p-8 md:p-12 text-center">
             <DisplayText size="md" as="h2" className="mb-4">
               Built and operated by ZERODIN Security.
             </DisplayText>
@@ -207,7 +195,6 @@ export default function ProductsPage() {
               </Link>
             </motion.div>
           </Glass>
-        </Reveal>
       </Section>
     </main>
   );

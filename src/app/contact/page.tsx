@@ -9,7 +9,6 @@ import {
   DisplayText,
   BodyText,
   Section,
-  Reveal,
 } from "@/components/glass";
 
 // The contact form needs useSearchParams to read ?product=ota-sentinel
@@ -130,8 +129,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen pt-24">
       <Section spacing="lg">
-        <Reveal>
-          <div className="text-center mb-12">
+        <div className="text-center mb-12">
             <BodyText
               size="sm"
               tone="tertiary"
@@ -147,12 +145,10 @@ export default function ContactPage() {
               Audit inquiries. All routed to the operator.
             </BodyText>
           </div>
-        </Reveal>
 
         <div className="grid md:grid-cols-3 gap-6">
           <div className="space-y-4 md:col-span-1">
-            <Reveal>
-              <Glass material="heavy" className="p-6">
+            <Glass material="heavy" className="p-6">
                 <BodyText size="sm" tone="tertiary" className="uppercase tracking-wider mb-2">
                   Security
                 </BodyText>
@@ -160,9 +156,7 @@ export default function ContactPage() {
                   security@zerodin.pro
                 </BodyText>
               </Glass>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <Glass material="heavy" className="p-6">
+            <Glass material="heavy" className="p-6">
                 <BodyText size="sm" tone="tertiary" className="uppercase tracking-wider mb-2">
                   Sales
                 </BodyText>
@@ -170,9 +164,7 @@ export default function ContactPage() {
                   sales@zerodin.pro
                 </BodyText>
               </Glass>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <Glass material="heavy" className="p-6">
+            <Glass material="heavy" className="p-6">
                 <BodyText size="sm" tone="tertiary" className="uppercase tracking-wider mb-2">
                   Location
                 </BodyText>
@@ -180,12 +172,10 @@ export default function ContactPage() {
                   Freetown, Sierra Leone
                 </BodyText>
               </Glass>
-            </Reveal>
           </div>
 
           <div className="md:col-span-2">
-            <Reveal delay={0.15}>
-              <Suspense
+            <Suspense
                 fallback={
                   <Glass material="heavy" className="p-8">
                     <div className="h-96 animate-pulse rounded-xl bg-white/[0.04]" />
@@ -194,7 +184,6 @@ export default function ContactPage() {
               >
                 <ContactForm />
               </Suspense>
-            </Reveal>
           </div>
         </div>
       </Section>

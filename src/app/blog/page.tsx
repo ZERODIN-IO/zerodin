@@ -6,7 +6,6 @@ import {
   DisplayText,
   BodyText,
   Section,
-  Reveal,
 } from "@/components/glass";
 
 const posts = [
@@ -45,8 +44,7 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen pt-24">
       <Section spacing="lg">
-        <Reveal>
-          <div className="text-center mb-12">
+        <div className="text-center mb-12">
             <BodyText
               size="sm"
               tone="tertiary"
@@ -63,12 +61,10 @@ export default function BlogPage() {
               software from Sierra Leone.
             </BodyText>
           </div>
-        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {posts.map((post, index) => (
-            <Reveal key={post.slug} delay={0.1 * index}>
-              <Link href={`/blog/${post.slug}`} className="block h-full">
+            <Link href={`/blog/${post.slug}`} className="block h-full">
                 <Glass
                   material="block"
                   hoverable
@@ -103,7 +99,6 @@ export default function BlogPage() {
                   </div>
                 </Glass>
               </Link>
-            </Reveal>
           ))}
         </div>
       </Section>

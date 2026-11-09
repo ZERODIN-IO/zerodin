@@ -6,7 +6,6 @@ import {
   DisplayText,
   BodyText,
   Section,
-  Reveal,
 } from "@/components/glass";
 
 
@@ -15,8 +14,7 @@ export default function DocsPage() {
   return (
     <main className="min-h-screen pt-24">
       <Section spacing="lg">
-        <Reveal>
-          <div className="text-center mb-12">
+        <div className="text-center mb-12">
             <BodyText
               size="sm"
               tone="tertiary"
@@ -33,11 +31,9 @@ export default function DocsPage() {
               being onboarded with its first operators.
             </BodyText>
           </div>
-        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <Reveal delay={0.1}>
-            <Glass material="heavy" className="p-8 md:p-10 h-full flex flex-col">
+          <Glass material="heavy" className="p-8 md:p-10 h-full flex flex-col">
               <DisplayText size="md" as="h2" className="text-2xl mb-3">
                 ATHELOS
               </DisplayText>
@@ -56,10 +52,8 @@ export default function DocsPage() {
                 </GlassButton>
               </a>
             </Glass>
-          </Reveal>
 
-          <Reveal delay={0.2}>
-            <Glass material="heavy" className="p-8 md:p-10 h-full flex flex-col">
+          <Glass material="heavy" className="p-8 md:p-10 h-full flex flex-col">
               <DisplayText size="md" as="h2" className="text-2xl mb-3">
                 OTA Sentinel
               </DisplayText>
@@ -72,11 +66,9 @@ export default function DocsPage() {
                 Request the brief
               </GlassButton>
             </Glass>
-          </Reveal>
         </div>
 
-        <Reveal delay={0.3}>
-          <Glass material="heavy" className="max-w-3xl mx-auto p-8 md:p-12 mt-12 text-center">
+        <Glass material="heavy" className="max-w-3xl mx-auto p-8 md:p-12 mt-12 text-center">
             <DisplayText size="md" as="h2" className="text-2xl mb-3">
               Questions about deployment?
             </DisplayText>
@@ -89,7 +81,6 @@ export default function DocsPage() {
               Contact us
             </GlassButton>
           </Glass>
-        </Reveal>
       </Section>
     </main>
   );
