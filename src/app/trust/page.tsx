@@ -71,9 +71,9 @@ export default function TrustPage() {
               Security posture.
             </DisplayText>
             <BodyText size="base" tone="secondary" className="max-w-2xl mx-auto">
-              What is actually true about how both products handle security,
-              isolation, and client data. No aspirational certifications, no
-              claims we cannot prove.
+              These are the standards ZERODIN holds across every product —
+              current and future. No aspirational certifications, no claims
+              we cannot prove.
             </BodyText>
           </div>
         </Reveal>

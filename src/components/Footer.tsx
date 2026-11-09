@@ -34,8 +34,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-text-secondary leading-relaxed max-w-sm">
-              See the unseen. Two products, one standard: ATHELOS for
-              cybersecurity operators, OTA Sentinel for telecom SIM security.
+              See the unseen. A cybersecurity company building tools that
+              find what others miss.
             </p>
             <p className="text-xs text-text-tertiary mt-4 font-mono">
               security@zerodin.pro

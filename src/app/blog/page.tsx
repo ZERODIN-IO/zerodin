@@ -53,7 +53,7 @@ export default function BlogPage() {
               Blog
             </BodyText>
             <DisplayText size="lg" as="h1" className="mb-4">
-              Writing.
+              Notes from the operator.
             </DisplayText>
             <BodyText size="base" tone="secondary" className="max-w-2xl mx-auto">
               Occasional notes on the two products ZERODIN ships, the

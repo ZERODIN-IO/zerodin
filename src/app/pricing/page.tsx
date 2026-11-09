@@ -218,6 +218,18 @@ export default function PricingPage() {
         </div>
       </Section>
 
+      {/* Note about future products */}
+      <Section spacing="sm">
+        <Reveal>
+          <div className="max-w-3xl mx-auto text-center">
+            <BodyText size="base" tone="secondary">
+              More products will be added as they ship. Contact us to be
+              notified.
+            </BodyText>
+          </div>
+        </Reveal>
+      </Section>
+
       {/* Final CTA */}
       <Section spacing="lg">
         <Reveal>

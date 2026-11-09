@@ -129,6 +129,60 @@ export default function ProductsPage() {
 
       <Section spacing="md">
         <Reveal>
+          <div className="max-w-3xl mx-auto">
+            <BodyText
+              size="sm"
+              tone="tertiary"
+              className="uppercase tracking-[0.2em] mb-6"
+            >
+              What's next
+            </BodyText>
+            <DisplayText size="md" as="h2" className="mb-8">
+              Two products shipped. More in development.
+            </DisplayText>
+            <BodyText size="base" tone="secondary" className="mb-6">
+              ATHELOS and OTA Sentinel are the first two. The roadmap is the
+              same mission applied to other problems:
+            </BodyText>
+            <div className="space-y-4">
+              <Glass material="heavy" className="p-6">
+                <DisplayText size="md" as="h3" className="text-lg mb-2">
+                  Defensive tooling
+                </DisplayText>
+                <BodyText size="sm" tone="secondary">
+                  The same rigor ATHELOS brings to offensive work, applied to
+                  detection, response, and monitoring.
+                </BodyText>
+              </Glass>
+              <Glass material="heavy" className="p-6">
+                <DisplayText size="md" as="h3" className="text-lg mb-2">
+                  Telecom security
+                </DisplayText>
+                <BodyText size="sm" tone="secondary">
+                  More tools for the operators and regulators responsible for
+                  network and SIM security.
+                </BodyText>
+              </Glass>
+              <Glass material="heavy" className="p-6">
+                <DisplayText size="md" as="h3" className="text-lg mb-2">
+                  Operator tooling
+                </DisplayText>
+                <BodyText size="sm" tone="secondary">
+                  The command center, extended. New pillars, new integrations,
+                  new workflows.
+                </BodyText>
+              </Glass>
+            </div>
+            <BodyText size="sm" tone="tertiary" className="mt-6">
+              Products will be announced when they are ready. Contact us to be
+              notified.
+            </BodyText>
+          </div>
+        </Reveal>
+      </Section>
+
+      <Section spacing="md">
+        <Reveal>
           <Glass material="thick" className="p-8 md:p-12 text-center">
             <DisplayText size="md" as="h2" className="mb-4">
               Built and operated by ZERODIN Security.
