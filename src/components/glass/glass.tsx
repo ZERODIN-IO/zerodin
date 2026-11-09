@@ -114,6 +114,7 @@ const materialClasses: Record<GlassMaterial, string> = {
   // so the panel looks like it glows from inside.
   liquid: cn(
     "backdrop-blur-xl bg-[rgba(0,227,253,0.04)] border-2 border-[rgba(0,227,253,0.12)]",
+    "rounded-3xl",
     "glass-liquid",
     "shadow-[0_4px_16px_rgba(0,227,253,0.12),0_16px_40px_rgba(0,227,253,0.06),0_32px_64px_rgba(0,0,0,0.08)]",
     "overflow-hidden"

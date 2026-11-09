@@ -172,7 +172,7 @@ export default function HomePage() {
       <Section spacing="md">
         <Reveal>
           <Glass
-            material="thick"
+            material="liquid"
             className="max-w-4xl mx-auto p-8 md:p-12"
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -211,7 +211,7 @@ export default function HomePage() {
       <Section spacing="lg">
         <Reveal>
           <Glass
-            material="crystal"
+            material="liquid"
             className="max-w-3xl mx-auto p-10 md:p-16 text-center"
           >
             <DisplayText size="md" as="h2" className="mb-4">
