@@ -173,16 +173,16 @@ export const Glass = forwardRef<HTMLDivElement, GlassProps>(
     );
 
     if (hoverable) {
+      // CSS-only hover lift — no Framer Motion, no backdrop-filter
+      // animation. The card still lifts visually on hover.
       return (
-        <motion.div
+        <Component
           ref={ref}
-          className={classes}
-          whileHover={{ y: -4 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className={cn(classes, "transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1")}
           {...rest}
         >
           {children}
-        </motion.div>
+        </Component>
       );
     }
 
