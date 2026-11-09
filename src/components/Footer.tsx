@@ -43,7 +43,7 @@ export function Footer() {
             </p>
             <p className="text-sm text-text-secondary mt-2">
               Products are announced when they are ready. Contact us at{" "}
-              <a href="mailto:security@zerodin.pro" className="text-text-accent hover:underline">
+              <a href="mailto:security@zerodin.pro" className="text-text-primary underline underline-offset-2 hover:text-text-accent">
                 security@zerodin.pro
               </a>{" "}
               to be notified.
@@ -55,9 +55,9 @@ export function Footer() {
 
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-4">
+              <p className="text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-4">
                 {category}
-              </h4>
+              </p>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.name}>
