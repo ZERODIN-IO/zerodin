@@ -253,7 +253,6 @@ html {
     radial-gradient(50% 45% at 85% 75%, rgba(124, 92, 255, 0.14), transparent 65%),
     radial-gradient(45% 40% at 20% 80%, rgba(30, 60, 120, 0.15), transparent 65%);
   filter: blur(80px);
-  animation: aurora-drift 30s ease-in-out infinite;
 }
 
 .light .aurora-bg {
@@ -264,11 +263,7 @@ html {
     radial-gradient(45% 40% at 20% 80%, rgba(60, 120, 180, 0.08), transparent 65%);
 }
 
-@keyframes aurora-drift {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  33%      { transform: translate3d(-12px, 6px, 0); }
-  66%      { transform: translate3d(8px, -4px, 0); }
-}
+
 
 @media (prefers-reduced-motion: reduce) {
   .aurora-bg { animation: none; }
