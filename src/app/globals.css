@@ -70,6 +70,22 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
+/* The page background behind the aurora. Slightly lighter and bluer
+   than pure void so the aurora glows within a field rather than
+   spotting on black. In dark mode this is #0A1018; in light mode
+   this is #EEF2F7. The aurora sits on top of this. */
+:root {
+  --page-bg: #0A1018;
+}
+
+.light {
+  --page-bg: #EEF2F7;
+}
+
+html {
+  background: var(--page-bg);
+}
+
 /* Glow Effects */
 .glow-cyan {
   box-shadow: 0 0 20px rgba(0, 227, 253, 0.15), 0 0 40px rgba(0, 227, 253, 0.05);
@@ -219,33 +235,39 @@ body {
   );
 }
 
-/* The aurora — three radial gradients drifting in three-phase sync.
-   Rendered as a fixed full-viewport element behind everything.
-   Zero JavaScript — pure CSS keyframes for the drift. */
+/* The aurora — a layered mesh of four overlapping color fields.
+   The mesh covers the whole viewport so there is color everywhere,
+   not three disconnected glows separated by dark void. The opacity
+   is higher than before (12-18% in dark mode) and the blur is lower
+   (80px instead of 120px) so the color has density. The drift is
+   slower and smaller so the mesh feels like a static field with a
+   gentle breathing, not a moving light show. */
 .aurora-bg {
   position: fixed;
-  inset: -20%;
+  inset: -15%;
   z-index: -20;
   pointer-events: none;
   background:
-    radial-gradient(40% 35% at 15% 20%, rgba(0, 227, 253, 0.10), transparent 70%),
-    radial-gradient(45% 40% at 85% 75%, rgba(124, 92, 255, 0.07), transparent 70%),
-    radial-gradient(35% 30% at 75% 15%, rgba(0, 255, 163, 0.05), transparent 70%);
-  filter: blur(120px);
-  animation: aurora-drift 20s ease-in-out infinite;
+    radial-gradient(45% 40% at 15% 20%, rgba(0, 227, 253, 0.18), transparent 65%),
+    radial-gradient(40% 35% at 80% 15%, rgba(0, 255, 163, 0.12), transparent 65%),
+    radial-gradient(50% 45% at 85% 75%, rgba(124, 92, 255, 0.14), transparent 65%),
+    radial-gradient(45% 40% at 20% 80%, rgba(30, 60, 120, 0.15), transparent 65%);
+  filter: blur(80px);
+  animation: aurora-drift 30s ease-in-out infinite;
 }
 
 .light .aurora-bg {
   background:
-    radial-gradient(40% 35% at 15% 20%, rgba(0, 144, 168, 0.10), transparent 70%),
-    radial-gradient(45% 40% at 85% 75%, rgba(124, 92, 255, 0.05), transparent 70%),
-    radial-gradient(35% 30% at 75% 15%, rgba(0, 168, 163, 0.04), transparent 70%);
+    radial-gradient(45% 40% at 15% 20%, rgba(0, 144, 168, 0.10), transparent 65%),
+    radial-gradient(40% 35% at 80% 15%, rgba(0, 168, 163, 0.08), transparent 65%),
+    radial-gradient(50% 45% at 85% 75%, rgba(124, 92, 255, 0.06), transparent 65%),
+    radial-gradient(45% 40% at 20% 80%, rgba(60, 120, 180, 0.08), transparent 65%);
 }
 
 @keyframes aurora-drift {
   0%, 100% { transform: translate3d(0, 0, 0); }
-  33%      { transform: translate3d(-24px, 12px, 0); }
-  66%      { transform: translate3d(16px, -8px, 0); }
+  33%      { transform: translate3d(-12px, 6px, 0); }
+  66%      { transform: translate3d(8px, -4px, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
