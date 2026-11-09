@@ -136,6 +136,7 @@ const materialClasses: Record<GlassMaterial, string> = {
   heavy: cn(
     "backdrop-blur-2xl bg-black/[0.15] border-2 border-black/[0.20]",
     "glass-heavy",
+    "shadow-[inset_0_-1px_0_rgba(0,0,0,0.10)]",
     "shadow-[0_6px_16px_rgba(0,0,0,0.30),0_24px_48px_rgba(0,0,0,0.18),0_56px_96px_rgba(0,0,0,0.10)]",
     "overflow-hidden"
   ),
