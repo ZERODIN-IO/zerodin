@@ -8,6 +8,7 @@ import { Glass, GlassButton } from "@/components/glass";
 
 const navItems = [
   { name: "Products", href: "/products", hasDropdown: true },
+  { name: "Compare", href: "/compare" },
   { name: "Pricing", href: "/pricing" },
   { name: "Blog", href: "/blog" },
   { name: "Trust", href: "/trust" },

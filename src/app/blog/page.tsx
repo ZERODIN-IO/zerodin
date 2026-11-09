@@ -98,7 +98,7 @@ export default function BlogPage() {
                       {post.category}
                     </BodyText>
                     <BodyText size="sm" tone="secondary" className="text-text-accent">
-                      Read more →
+                      Read {post.title} →
                     </BodyText>
                   </div>
                 </Glass>

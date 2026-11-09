@@ -157,7 +157,7 @@ export default function HomePage() {
                       {product.tagline}
                     </BodyText>
                     <span className="inline-flex items-center gap-2 text-sm text-text-accent">
-                      Learn more
+                      Learn more about {product.name}
                       <span aria-hidden="true">→</span>
                     </span>
                   </Glass>
