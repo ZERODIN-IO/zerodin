@@ -54,6 +54,8 @@ const compliance = [
   { name: "No Cloud AI", status: "Standard", detail: "Ollama runs locally" },
 ];
 
+
+
 export default function TrustPage() {
   return (
     <main className="min-h-screen pt-24">

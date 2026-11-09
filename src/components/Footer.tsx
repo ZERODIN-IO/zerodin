@@ -37,6 +37,16 @@ export function Footer() {
               See the unseen. A cybersecurity company building tools that
               find what others miss.
             </p>
+            <p className="text-xs text-text-tertiary mt-6 uppercase tracking-wider">
+              Stay informed
+            </p>
+            <p className="text-sm text-text-secondary mt-2">
+              Products are announced when they are ready. Contact us at{" "}
+              <a href="mailto:security@zerodin.pro" className="text-text-accent hover:underline">
+                security@zerodin.pro
+              </a>{" "}
+              to be notified.
+            </p>
             <p className="text-xs text-text-tertiary mt-4 font-mono">
               security@zerodin.pro
             </p>

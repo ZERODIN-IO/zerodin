@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, Suspense } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
@@ -11,8 +12,12 @@ import {
   GlassButton,
   DisplayText,
   BodyText,
-  LightParticles,
 } from "@/components/glass";
+
+const LightParticles = dynamic(
+  () => import("@/components/glass/light-particles").then((m) => m.LightParticles),
+  { ssr: false }
+);
 
 const products = [
   {
@@ -30,6 +35,8 @@ const products = [
     size: "small" as const,
   },
 ];
+
+
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);

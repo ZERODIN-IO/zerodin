@@ -64,7 +64,9 @@ export function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className="px-3 py-2 rounded-full text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 flex items-center gap-1"
+                    aria-haspopup="menu"
+                    aria-expanded={productsOpen}
+                    className="px-3 py-2 rounded-full text-sm text-text-secondary hover:text-text-primary transition-colors duration-200 flex items-center gap-1"
                   >
                     {item.name}
                     <ChevronDown className="h-3 w-3" />
@@ -111,6 +113,7 @@ export function Navbar() {
               onClick={toggleTheme}
               className="p-2 rounded-full text-muted-foreground hover:text-foreground transition-colors"
               title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             >
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>

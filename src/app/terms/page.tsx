@@ -8,6 +8,8 @@ import {
   Reveal,
 } from "@/components/glass";
 
+
+
 export default function TermsPage() {
   return (
     <main className="min-h-screen pt-24">

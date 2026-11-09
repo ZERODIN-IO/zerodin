@@ -70,6 +70,8 @@ const otaSentinelTiers = [
   },
 ];
 
+
+
 export default function PricingPage() {
   return (
     <main className="min-h-screen pt-24">

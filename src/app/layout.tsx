@@ -31,6 +31,17 @@ export const metadata: Metadata = {
     description: 'Two products, both shipped. ATHELOS and OTA Sentinel.',
     url: 'https://zerodin.pro',
     siteName: 'ZERODIN',
+    images: [{ url: 'https://zerodin.pro/og-image.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ZERODIN — Security infrastructure for the operators',
+    description: 'Two products, both shipped. ATHELOS and OTA Sentinel.',
+    images: ['https://zerodin.pro/og-image.png'],
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
 };
 

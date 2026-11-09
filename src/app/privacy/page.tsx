@@ -8,6 +8,8 @@ import {
   Reveal,
 } from "@/components/glass";
 
+
+
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen pt-24">

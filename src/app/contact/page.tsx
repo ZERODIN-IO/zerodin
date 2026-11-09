@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
+import { submitContactForm } from "@/lib/contact/actions";
 import { useSearchParams } from "next/navigation";
 import {
   Glass,
@@ -28,9 +29,26 @@ function ContactForm() {
     }
   }, [searchParams]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError(null);
+
+    const result = await submitContactForm({ name, email, subject, message });
+
+    setSending(false);
+
+    if (result.ok) {
+      setSubmitted(true);
+    } else {
+      setError(result.error || "Something went wrong. Please email security@zerodin.pro directly.");
+    }
   };
 
   if (submitted) {
@@ -105,6 +123,8 @@ function ContactForm() {
     </Glass>
   );
 }
+
+
 
 export default function ContactPage() {
   return (

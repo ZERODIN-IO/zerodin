@@ -39,6 +39,8 @@ const posts = [
   },
 ];
 
+
+
 export default function BlogPage() {
   return (
     <main className="min-h-screen pt-24">

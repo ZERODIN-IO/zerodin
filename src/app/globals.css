@@ -461,7 +461,7 @@ html {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background-image: url("/hero-bg.jpg");
+  background-image: url("/hero-bg.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -518,7 +518,7 @@ html {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url("/hero-bg.jpg");
+  background-image: url("/hero-bg.webp");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
