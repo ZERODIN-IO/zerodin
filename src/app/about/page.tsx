@@ -58,18 +58,64 @@ export default function AboutPage() {
               About
             </BodyText>
             <DisplayText size="xl" as="h1" className="mb-6">
-              Two products, one operator.
+              A cybersecurity company. One operator. Two products in production.
             </DisplayText>
             <BodyText size="lg" tone="secondary" className="max-w-xl mx-auto">
-              ZERODIN is a security software company based in Freetown,
-              Sierra Leone. It ships two products — ATHELOS and OTA Sentinel —
-              built by one operator with no venture capital.
+              ZERODIN builds cybersecurity tools for the operators who defend
+              networks, systems, and infrastructure. Two products are shipped
+              today. More are in development.
             </BodyText>
           </Glass>
         </Reveal>
       </Section>
 
       {/* Stats */}
+      {/* ============================================================ */}
+      {/* THE MISSION */}
+      {/* ============================================================ */}
+      <Section spacing="lg">
+        <Reveal>
+          <div className="max-w-3xl mx-auto">
+            <BodyText
+              size="sm"
+              tone="tertiary"
+              className="uppercase tracking-[0.2em] mb-6"
+            >
+              Who we are
+            </BodyText>
+            <DisplayText size="md" as="h2" className="mb-8">
+              Cybersecurity for the operators.
+            </DisplayText>
+            <BodyText size="lg" tone="primary" className="mb-6">
+              ZERODIN is a cybersecurity company. We build tools for security
+              operators, network engineers, and the organizations responsible
+              for protecting critical infrastructure.
+            </BodyText>
+            <BodyText size="base" tone="secondary" className="mb-4">
+              We work across offensive and defensive security. The offensive
+              side is where threats are found — penetration testing,
+              vulnerability research, the discovery of what an attacker would
+              exploit. The defensive side is where those findings become
+              protection — detection, response, the systems that keep a
+              network safe after the threat is known. Both matter. Both are
+              part of the same work.
+            </BodyText>
+            <BodyText size="base" tone="secondary" className="mb-4">
+              We ship two products today: ATHELOS, a command center for
+              security operators, and OTA Sentinel, a SIM security platform
+              for telecom networks. Both are in production. Both are used by
+              real operators. Both are the first of more.
+            </BodyText>
+            <BodyText size="base" tone="secondary">
+              What we build is self-hosted where possible. Audited. Proven by
+              tests, not by claims. The customer keeps their data. The operator
+              keeps control. The tools work in the environments where security
+              actually happens — networks, servers, SIM cards — not in a demo.
+            </BodyText>
+          </div>
+        </Reveal>
+      </Section>
+
       <Section spacing="md">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat, index) => (

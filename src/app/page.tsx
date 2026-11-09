@@ -117,7 +117,8 @@ export default function HomePage() {
                 Security infrastructure for the operators.
               </DisplayText>
               <BodyText size="lg" tone="secondary">
-                Two products. One standard. Built and shipped.
+                A cybersecurity company building tools for the operators.
+                Two products shipped. More in development.
               </BodyText>
             </Glass>
           </motion.div>
@@ -170,6 +171,45 @@ export default function HomePage() {
           <div className="h-12 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent" />
         </motion.div>
       </section>
+
+      {/* ============================================================ */}
+      {/* THE MISSION */}
+      {/* ============================================================ */}
+      <Section spacing="lg">
+        <Reveal>
+          <div className="max-w-3xl mx-auto">
+            <BodyText
+              size="sm"
+              tone="tertiary"
+              className="uppercase tracking-[0.2em] mb-6"
+            >
+              The mission
+            </BodyText>
+            <DisplayText size="md" as="h2" className="mb-8">
+              We build for the people who do the work.
+            </DisplayText>
+            <BodyText size="lg" tone="primary" className="mb-6">
+              ZERODIN builds cybersecurity tools for the security operators,
+              network engineers, and organizations responsible for protecting
+              critical infrastructure. The people who are accountable for
+              finding what is wrong before someone else does.
+            </BodyText>
+            <BodyText size="base" tone="secondary" className="mb-6">
+              We work across offensive and defensive security. The offensive
+              side is where threats are found — the vulnerability research,
+              the penetration testing, the discovery of what an attacker would
+              exploit. The defensive side is where those findings become
+              protection — the detection, the response, the systems that keep
+              a network safe after the threat is known.
+            </BodyText>
+            <BodyText size="base" tone="secondary">
+              What we build is self-hosted where possible. Audited. Proven by
+              tests, not by claims. Two products are shipped today. More are
+              in development. The rest is engineering.
+            </BodyText>
+          </div>
+        </Reveal>
+      </Section>
 
       {/* ============================================================ */}
       {/* LOWER SECTIONS WITH SHARED BACKGROUND IMAGE */}
