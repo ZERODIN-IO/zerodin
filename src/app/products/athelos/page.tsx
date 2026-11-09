@@ -171,7 +171,7 @@ export default function AthelosPage() {
         </div>
       </Section>
 
-      {/* OWASP proof panel */}
+      {/* Isolation proof panel */}
       <Section spacing="md">
         <Reveal>
           <Glass
@@ -183,18 +183,22 @@ export default function AthelosPage() {
               tone="tertiary"
               className="uppercase tracking-[0.2em] mb-6"
             >
-              Isolation Proven
+              Isolation
             </BodyText>
             <DisplayText size="md" as="h2" className="mb-6">
-              Tenant B saw 0 rows. Tenant A saw 59 rows.
+              Every customer runs on their own database.
             </DisplayText>
-            <BodyText size="base" tone="secondary" className="mb-6 max-w-xl mx-auto">
-              The OWASP Cross-Tenant Boundary Test runs against two real
-              tenant databases. One tenant writes. The other cannot read a
-              single row. Verified at commit 430630a.
+            <BodyText size="base" tone="secondary" className="mb-4 max-w-xl mx-auto">
+              There is no shared table, no row-level filter, and no query that
+              can reach across tenants. The isolation is architectural, not a
+              policy that can be misconfigured.
             </BodyText>
-            <BodyText size="sm" tone="tertiary" className="font-mono">
-              test/cloud/owasp-cross-tenant.ts
+            <BodyText size="base" tone="secondary" className="max-w-xl mx-auto">
+              The claim is verified by an independent cross-tenant boundary
+              test against two real customer databases. One tenant attempts to
+              read the other's data. The result: zero rows returned. The test
+              runs on every release. The full proof is documented in the
+              ATHELOS security whitepaper.
             </BodyText>
           </Glass>
         </Reveal>

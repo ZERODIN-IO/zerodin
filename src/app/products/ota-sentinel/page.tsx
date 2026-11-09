@@ -244,7 +244,7 @@ export default function OtaSentinelPage() {
         </div>
       </Section>
 
-      {/* Trust panel — RLS + audit + encryption */}
+      {/* Security posture panel */}
       <Section spacing="md">
         <Reveal>
           <Glass
@@ -256,35 +256,47 @@ export default function OtaSentinelPage() {
               tone="tertiary"
               className="uppercase tracking-[0.2em] mb-6 text-center"
             >
-              Security Posture
+              Security posture
             </BodyText>
             <div className="space-y-6">
               <div>
                 <DisplayText size="md" as="h3" className="text-lg mb-2">
-                  Row-Level Security
+                  Audit logging
                 </DisplayText>
                 <BodyText size="base" tone="secondary">
-                  PostgreSQL physically prevents Tenant A from querying
-                  Tenant B's data. Audited by automated tests — 11/11 passing,
-                  including RLS isolation proofs.
+                  Every scan, every command, and every access is recorded in
+                  a tamper-evident log. If any record is altered, the change
+                  is cryptographically detectable.
                 </BodyText>
               </div>
               <div>
                 <DisplayText size="md" as="h3" className="text-lg mb-2">
-                  Immutable Forensics
+                  Credential protection
                 </DisplayText>
                 <BodyText size="base" tone="secondary">
-                  Hash-chained audit logs (SHA-256) record every action.
-                  Tampering is cryptographically detectable.
+                  Network credentials — including SMSC passwords and SIM
+                  authentication keys — are encrypted at rest using AES-256
+                  and are never written to disk or logs in plaintext.
                 </BodyText>
               </div>
               <div>
                 <DisplayText size="md" as="h3" className="text-lg mb-2">
-                  Credential Encryption
+                  Access control
                 </DisplayText>
                 <BodyText size="base" tone="secondary">
-                  SMSC passwords and KIC/KID materials encrypted at rest using
-                  Fernet (AES-128). Never written to disk or logs in plaintext.
+                  Role-based access separates read-only analysts from
+                  operators who can execute campaigns. Every action is
+                  attributed to a named user.
+                </BodyText>
+              </div>
+              <div>
+                <DisplayText size="md" as="h3" className="text-lg mb-2">
+                  Deployment
+                </DisplayText>
+                <BodyText size="base" tone="secondary">
+                  OTA Sentinel can be deployed on the operator's own
+                  infrastructure, keeping all SIM card data inside the
+                  network perimeter.
                 </BodyText>
               </div>
             </div>
