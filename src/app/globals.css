@@ -615,3 +615,62 @@ html {
 
 
 
+
+
+/* === LANDING LOWER BACKGROUND IMAGE === */
+
+/* The same server room image used behind the hero, but treated much
+   more faintly so it reads as a continuation of the hero's atmosphere,
+   not a repetition. The image is blurred more, darkened more, and
+   faded at both the top and bottom so it transitions smoothly into
+   the mesh above (below the hero) and below (above the footer). */
+.landing-lower-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/hero-bg.jpg");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  filter: blur(8px) saturate(0.7) brightness(0.6);
+  opacity: 0.5;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* A dark gradient overlay so the lower panels remain readable against
+   the image. Darker than the hero's gradient because the image below
+   the hero is already very faded. */
+.landing-lower-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 16, 24, 0.4) 0%,
+    rgba(10, 16, 24, 0.6) 50%,
+    rgba(10, 16, 24, 0.7) 100%
+  );
+  pointer-events: none;
+}
+
+.light .landing-lower-bg {
+  display: none;
+}
+
+.light .landing-lower-bg::after {
+  display: none;
+}

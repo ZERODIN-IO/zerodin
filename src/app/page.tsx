@@ -172,9 +172,13 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* POSITIONING SLIVER */}
+      {/* LOWER SECTIONS WITH SHARED BACKGROUND IMAGE */}
       {/* ============================================================ */}
-      <Section spacing="md">
+      <div className="relative">
+        <div className="landing-lower-bg" aria-hidden="true" />
+
+        {/* Positioning sliver */}
+        <Section spacing="md" className="relative z-[1]">
         <Reveal>
           <Glass
             material="liquid"
@@ -210,10 +214,8 @@ export default function HomePage() {
         </Reveal>
       </Section>
 
-      {/* ============================================================ */}
-      {/* CTA PANEL */}
-      {/* ============================================================ */}
-      <Section spacing="lg">
+        {/* CTA panel */}
+        <Section spacing="lg" className="relative z-[1]">
         <Reveal>
           <Glass
             material="liquid"
@@ -248,7 +250,8 @@ export default function HomePage() {
             </div>
           </Glass>
         </Reveal>
-      </Section>
+        </Section>
+      </div>
     </div>
   );
 }
