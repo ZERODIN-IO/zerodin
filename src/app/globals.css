@@ -558,3 +558,60 @@ html {
     rgba(0, 0, 0, 0)
   );
 }
+
+
+/* === HERO BACKGROUND IMAGE === */
+
+/* A treated photograph behind the landing hero only. The image is
+   darkened, softened with a blur, and tinted cyan so it sits behind
+   the glass cards as atmosphere, not as a photo with detail. The
+   radial mask fades the image to the aurora mesh toward the edges
+   so there is no hard boundary. */
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image: url("/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px) saturate(0.85) brightness(0.85);
+  mask-image: radial-gradient(
+    ellipse 90% 80% at 50% 30%,
+    black 0%,
+    black 55%,
+    transparent 90%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 90% 80% at 50% 30%,
+    black 0%,
+    black 55%,
+    transparent 90%
+  );
+  pointer-events: none;
+}
+
+.light .hero-bg-image {
+  display: none;
+}
+
+.hero-bg-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 16, 24, 0.25) 0%,
+    rgba(10, 16, 24, 0.55) 60%,
+    rgba(10, 16, 24, 0.75) 100%
+  );
+  pointer-events: none;
+}
+
+.light .hero-bg-image::after {
+  display: none;
+}
+
+
+
+

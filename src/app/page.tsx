@@ -73,10 +73,13 @@ export default function HomePage() {
       {/* ============================================================ */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center px-4 py-24"
+        className="isolate relative min-h-screen flex items-center justify-center px-4 py-24"
       >
+        {/* Hero background image — the treated server room photo */}
+        <div className="hero-bg-image" aria-hidden="true" />
+
         {/* Depth -1: faint background glass shapes */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none relative z-[3]" aria-hidden="true">
           <Glass
             material="bubble"
             className="absolute w-[300px] h-[300px] opacity-[0.15] -top-20 -left-20"
@@ -90,9 +93,11 @@ export default function HomePage() {
         </div>
 
         {/* Depth 1.5: light particles */}
-        <Suspense fallback={null}>
-          <LightParticles count={200} />
-        </Suspense>
+        <div className="absolute inset-0 relative z-[3] pointer-events-none" aria-hidden="true">
+          <Suspense fallback={null}>
+            <LightParticles count={200} />
+          </Suspense>
+        </div>
 
         {/* Depth 1 + 2: content */}
         <div className="relative z-10 w-full max-w-5xl mx-auto">
